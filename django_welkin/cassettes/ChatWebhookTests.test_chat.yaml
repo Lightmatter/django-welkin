@@ -1,0 +1,154 @@
+interactions:
+  - request:
+      body: null
+      headers:
+        Accept:
+          - "*/*"
+        Accept-Encoding:
+          - gzip, deflate, br
+        Authorization:
+          - API_TOKEN_d2d45845-8aa3-492d-8e04-e7ab46240f6e
+        Connection:
+          - keep-alive
+        User-Agent:
+          - python-welkin/0.0.5
+      method: GET
+      uri: https://api.live.welkincloud.io/tenant_REDACTED/instance_REDACTED/patients/17450e44-c2c8-46c4-9486-0d9bfa16d3aa/chat?includeArchived=False&pageSize=20
+    response:
+      body:
+        string: '{"meta": {"nextPageToken": null,
+          "prevPageToken": null, "pageSize": 20, "found": true}, "content": [{"sender":
+          {"clientType": "USER", "id": "d2b3d940-01ec-44f3-a2cd-b5298823ec9f", "titleName":
+          "Sam Morgan", "patientFullName": null}, "message": "Give me a message", "externalId":
+          "IMda11c26dee344175bef9019355530be9", "createdAt": "2022-09-15T03:47:15.000Z"},
+          {"sender": {"clientType": "PATIENT", "id": "17450e44-c2c8-46c4-9486-0d9bfa16d3aa",
+          "titleName": null, "patientFullName": null}, "message": "Test", "externalId":
+          "IM49cd5b9933664377855828d84936c146", "createdAt": "2022-09-14T21:18:23.000Z"},
+          {"sender": {"clientType": "PATIENT", "id": "17450e44-c2c8-46c4-9486-0d9bfa16d3aa",
+          "titleName": null, "patientFullName": null}, "message": "No, it doesn''t.",
+          "externalId": "IM2326a42bcc09468e91ac854bd7cf274e", "createdAt": "2022-09-13T16:37:13.000Z"},
+          {"sender": {"clientType": "USER", "id": "d2b3d940-01ec-44f3-a2cd-b5298823ec9f",
+          "titleName": "Sam Morgan", "patientFullName": null}, "message": "Does this
+          scroll?", "externalId": "IMc1986c66f23a4ff1a54cf47fbf9d91e7", "createdAt":
+          "2022-09-13T16:36:53.000Z"}, {"sender": {"clientType": "USER", "id": "d2b3d940-01ec-44f3-a2cd-b5298823ec9f",
+          "titleName": "Sam Morgan", "patientFullName": null}, "message": "Test the
+          webhook", "externalId": "IM27f66f73351a4415a97bfbd2d23a36a0", "createdAt":
+          "2022-08-18T20:40:42.000Z"}, {"sender": {"clientType": "USER", "id": "d2b3d940-01ec-44f3-a2cd-b5298823ec9f",
+          "titleName": "Sam Morgan", "patientFullName": null}, "message": "Does this
+          work two ways?", "externalId": "IM204dd4a00b2c41d9bd5324af7ba6510e", "createdAt":
+          "2022-08-18T20:38:49.000Z"}, {"sender": {"clientType": "PATIENT", "id": "17450e44-c2c8-46c4-9486-0d9bfa16d3aa",
+          "titleName": null, "patientFullName": null}, "message": "Typing a message.",
+          "externalId": "IM4cbff51bd019479cba5c8a537d3d2b98", "createdAt": "2022-08-18T20:38:37.000Z"},
+          {"sender": {"clientType": "PATIENT", "id": "17450e44-c2c8-46c4-9486-0d9bfa16d3aa",
+          "titleName": null, "patientFullName": null}, "message": "Typing a message.",
+          "externalId": "IM0c169699e6234eeb88486e5f59eed2d6", "createdAt": "2022-08-18T20:38:34.000Z"},
+          {"sender": {"clientType": "USER", "id": "d2b3d940-01ec-44f3-a2cd-b5298823ec9f",
+          "titleName": "Sam Morgan", "patientFullName": null}, "message": "Yes, it works.",
+          "externalId": "IMfa1b9619e8864c4ab5aa0975e923d943", "createdAt": "2022-08-17T14:42:26.000Z"},
+          {"sender": {"clientType": "PATIENT", "id": "17450e44-c2c8-46c4-9486-0d9bfa16d3aa",
+          "titleName": null, "patientFullName": null}, "message": "Hey, does this work?",
+          "externalId": "IMbf3db137bb034c859dc271c6746a9467", "createdAt": "2022-08-17T06:13:20.000Z"},
+          {"sender": {"clientType": "PATIENT", "id": "17450e44-c2c8-46c4-9486-0d9bfa16d3aa",
+          "titleName": null, "patientFullName": null}, "message": "Hey, does this work?",
+          "externalId": "IMcdcf245104da4c2c8b85d0f6873ec024", "createdAt": "2022-08-17T06:06:54.000Z"},
+          {"sender": {"clientType": "PATIENT", "id": "17450e44-c2c8-46c4-9486-0d9bfa16d3aa",
+          "titleName": null, "patientFullName": null}, "message": "I am typing a chat",
+          "externalId": "IM76bce8d45a3a4a8582ba2bc894ee929d", "createdAt": "2022-08-17T05:58:30.000Z"},
+          {"sender": {"clientType": "PATIENT", "id": "17450e44-c2c8-46c4-9486-0d9bfa16d3aa",
+          "titleName": null, "patientFullName": null}, "message": "Test", "externalId":
+          "IM5f396ca36bdd4e12b6ca1b97c05dda75", "createdAt": "2022-08-17T05:48:25.000Z"},
+          {"sender": {"clientType": "PATIENT", "id": "17450e44-c2c8-46c4-9486-0d9bfa16d3aa",
+          "titleName": null, "patientFullName": null}, "message": "Test", "externalId":
+          "IMb56c67d634cc401a85f83d59f4062601", "createdAt": "2022-08-17T05:46:52.000Z"},
+          {"sender": {"clientType": "PATIENT", "id": "17450e44-c2c8-46c4-9486-0d9bfa16d3aa",
+          "titleName": null, "patientFullName": null}, "message": "Test", "externalId":
+          "IMab2ebf813154498dbb3e1e486b22dc24", "createdAt": "2022-08-17T05:46:50.000Z"},
+          {"sender": {"clientType": "PATIENT", "id": "17450e44-c2c8-46c4-9486-0d9bfa16d3aa",
+          "titleName": null, "patientFullName": null}, "message": "Stupid scroll behavior
+          is stupid.", "externalId": "IM3055ac7a74f244299fab7b353c5d9389", "createdAt":
+          "2022-08-17T02:57:17.000Z"}, {"sender": {"clientType": "PATIENT", "id": "17450e44-c2c8-46c4-9486-0d9bfa16d3aa",
+          "titleName": null, "patientFullName": null}, "message": "asdfasfas", "externalId":
+          "IMd03bd83b85f84a6f9631f814fb5631a0", "createdAt": "2022-08-17T02:47:27.000Z"},
+          {"sender": {"clientType": "PATIENT", "id": "17450e44-c2c8-46c4-9486-0d9bfa16d3aa",
+          "titleName": null, "patientFullName": null}, "message": "Wait, does this work?",
+          "externalId": "IM71a754aac42f4210ab4366f84813904e", "createdAt": "2022-08-17T02:37:48.000Z"},
+          {"sender": {"clientType": "PATIENT", "id": "17450e44-c2c8-46c4-9486-0d9bfa16d3aa",
+          "titleName": null, "patientFullName": null}, "message": "The quick brown fox
+          yadda yadda", "externalId": "IM148bac55a87a46d8bea7a249954be5ef", "createdAt":
+          "2022-08-17T02:25:53.000Z"}, {"sender": {"clientType": "PATIENT", "id": "17450e44-c2c8-46c4-9486-0d9bfa16d3aa",
+          "titleName": null, "patientFullName": null}, "message": "Length test for user.
+          Length test for user. Length test for user. Length test for user. Length test
+          for user. Length test for user. Length test for user. Length test for user.
+          Length test for user. Length test for user. Length test for user. Length test
+          for user. Length test for user. Length test for user. Length test for user.
+          Length test for user. Length test for user. Length test for user. Length test
+          for user. Length test for user. Length test for user. Length test for user.
+          Length test for user. Length test for user. Length test for user. Length test
+          for user. Length test for user. Length test for user. Length test for user.
+          Length test for user. Length test for user. Length test for user. Length test
+          for user. Length test for user. Length test for user. Length test for user.
+          Length test for user. Length test for user. Length test for user. Length test
+          for user. Length test for user. Length test for user. Length test for user.
+          Length test for user. Length test for user. Length test for user. Length test
+          for user. Length test for user. Length test for user. Length test for user.
+          Length test for user. Length test for user. Length test for user. Length test
+          for user. Length test for user. Length test for user. Length test for user.
+          Length test for user. Length test for user. Length test for user. Length test
+          for user. Length test for user. Length test for user. Length test for user.
+          Length test for user. Length test for user. Length test for user. Length test
+          for user. Length test for user. Length test for user. Length test for user.
+          Length test for user. Length test for user. Length test for user. Length test
+          for user. Length test for user. Length test for user. Length test for user.
+          Length test for user. Length test for user. Length test for user. Length test
+          for user. Length test for user. Length test for user. Length test for user.
+          Length test for user. Length test for user. Length test for user. Length test
+          for user. Length test for user. Length test for user. Length test for user.
+          Length test for user. Length test for user. Length test for user. Length test
+          for user. Length test for user. Length test for user. Length test for user.
+          Length test for user. Length test for user. Length test for user. Length test
+          for user. Length test for user. Length test for user. Length test for user.
+          Length test for user. Length test for user. Length test for user. Length test
+          for user. Length test for user. Length test for user. Length test for user.
+          Length test for user. Length test for user. Length test for user. Length test
+          for user. Length test for user. Length test for user. Length test for user.
+          Length test for user. Length test for user. Length test for user. Length test
+          for user. Length test for user. Length test for user.", "externalId": "IM8fd14fd354db497f872b8e7a88ccec6b",
+          "createdAt": "2022-08-15T21:09:16.000Z"}]}'
+      headers:
+        Access-Control-Allow-Headers:
+          - authorization, content-type, xsrf-token, security-role
+        Access-Control-Allow-Methods:
+          - GET, POST, PUT, DELETE, PATCH, OPTIONS
+        Access-Control-Allow-Origin:
+          - "*"
+        Access-Control-Expose-Headers:
+          - xsrf-token
+        Access-Control-Max-Age:
+          - "3600"
+        Cache-Control:
+          - no-cache, no-store, max-age=0, must-revalidate
+        Connection:
+          - keep-alive
+        Content-Type:
+          - application/json
+        Date:
+          - Thu, 15 Sep 2022 03:49:15 GMT
+        Expires:
+          - "0"
+        Pragma:
+          - no-cache
+        Set-Cookie:
+          - AWSALB=odbtmx1SmACp360bVEtH28nLVq5pXt35FYXpytGhhx8t0ODGHyKahUvWA820eL2Tg6y05TtZKYRP75ll/YQyQC+zfXV+E7XSUwKGBHupRmES6+vN8o7WbedsKaNp;
+            Expires=Thu, 22 Sep 2022 03:49:15 GMT; Path=/
+          - AWSALBCORS=odbtmx1SmACp360bVEtH28nLVq5pXt35FYXpytGhhx8t0ODGHyKahUvWA820eL2Tg6y05TtZKYRP75ll/YQyQC+zfXV+E7XSUwKGBHupRmES6+vN8o7WbedsKaNp;
+            Expires=Thu, 22 Sep 2022 03:49:15 GMT; Path=/; SameSite=None; Secure
+        Transfer-Encoding:
+          - chunked
+        X-Content-Type-Options:
+          - nosniff
+        X-XSS-Protection:
+          - 1; mode=block
+      status:
+        code: 200
+        message: ""
+version: 1

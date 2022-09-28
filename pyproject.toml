@@ -1,0 +1,44 @@
+[tool.poetry]
+name = "django-welkin"
+version = "0.1.0"
+description = "A Django app interfacing with the Welkin API."
+license = "GPL-3.0-or-later"
+authors = ["Sam Morgan <sam@lightmatter.com>"]
+readme = "README.md"
+homepage = "https://pypi.org/project/django-welkin/"
+repository = "https://github.com/lightmatter/django-welkin"
+documentation = "https://django-welkin.readthedocs.io/"
+classifiers = [
+    "Environment :: Web Environment",
+    "Framework :: Django",
+    "Framework :: Django :: X.Y",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: BSD License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+]
+packages = [{ include = "django_welkin" }]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+welkin = "^0.0.6"
+Django = "^4.1.1"
+django-solo = "^2.0.0"
+django-environ = "^0.9.0"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^22.8.0"
+
+
+[tool.poetry.group.test.dependencies]
+pytest = "^7.1.3"
+pytest-vcr = "^1.0.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
