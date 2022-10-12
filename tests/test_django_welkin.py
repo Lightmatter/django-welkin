@@ -4,9 +4,8 @@ import pytest
 from django.test import Client, TestCase
 from django.urls import reverse
 from django.utils import timezone
-from model_bakery import baker
 
-from .models import (
+from ..django_welkin.models import (
     CalendarEvent,
     CDTRecord,
     Chat,
@@ -31,7 +30,7 @@ class WebhookTests(TestCase):
         self.client = Client(enforce_csrf_checks=True)
         self.url = self.url = reverse("welkin")
 
-        baker.make_recipe("rind.welkin.configuration")
+        # baker.make_recipe("rind.welkin.configuration")
 
         # Ensure token db is created
         Welkin().auth.token = {"token": "foo"}
@@ -78,10 +77,10 @@ class WebhookTests(TestCase):
             "sourceId": "834e4ab3-3e82-4a74-807c-bf0bb2b1308a",
             "patientId": "17450e44-c2c8-46c4-9486-0d9bfa16d3aa",
             "sourceName": "ENCOUNTER",
-            "tenantName": "zest",
+            "tenantName": "lightmatter",
             "eventEntity": "CALENDAR",
             "eventSubtype": "CALENDAR_EVENT_UPDATED",
-            "instanceName": "sb1",
+            "instanceName": "sandbox",
         }
         response = self.client.post(
             self.url,
@@ -103,13 +102,13 @@ class WebhookTests(TestCase):
             "sourceId": "9be39258-9a81-4dc4-953a-630e4e5fc77b",
             "patientId": "89ec0634-50f3-40b1-981d-22ab39dd3037",
             "sourceName": "insurance",
-            "tenantName": "zest",
+            "tenantName": "lightmatter",
             "eventEntity": "CDT",
             "eventSubtype": "CDT_CREATED",
-            "instanceName": "sb1",
+            "instanceName": "sandbox",
         }
-        baker.make("welkin.CDT", name=payload["sourceName"])
-        baker.make("welkin.Patient", id=payload["patientId"])
+        # baker.make("welkin.CDT", name=payload["sourceName"])
+        # baker.make("welkin.Patient", id=payload["patientId"])
 
         response = self.client.post(
             self.url,
@@ -131,10 +130,10 @@ class WebhookTests(TestCase):
             "sourceId": "49ec74c2-7368-4932-a98f-e5298622c191",
             "patientId": "49ec74c2-7368-4932-a98f-e5298622c191",
             "sourceName": "Webhook Patient",
-            "tenantName": "zest",
+            "tenantName": "lightmatter",
             "eventEntity": "PATIENT",
             "eventSubtype": "PATIENT_CREATED",
-            "instanceName": "sb1",
+            "instanceName": "sandbox",
         }
 
         response = self.client.post(
@@ -160,7 +159,7 @@ class ChatWebhookTests(TestCase):
         )
         self.url = self.url = reverse("chat")
 
-        baker.make_recipe("rind.welkin.configuration")
+        # baker.make_recipe("rind.welkin.configuration")
 
         # Ensure token db is created
         Welkin().auth.token = {"token": "foo"}
@@ -190,11 +189,11 @@ class ChatWebhookTests(TestCase):
     def test_chat(self):
         payload = {
             "patientId": "17450e44-c2c8-46c4-9486-0d9bfa16d3aa",
-            "tenantName": "zest",
-            "instanceName": "sb1",
+            "tenantName": "lightmatter",
+            "instanceName": "sandbox",
             "message": "Give me a message",
         }
-        baker.make("welkin.Patient", id=payload["patientId"])
+        # baker.make("welkin.Patient", id=payload["patientId"])
 
         response = self.client.post(
             self.url,
