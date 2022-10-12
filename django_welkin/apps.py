@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class WelkinConfig(AppConfig):
-    name = "welkin"
-    verbose_name = "Welkin"
+class DjangoWelkinConfig(AppConfig):
+    name = "django_welkin"
+    verbose_name = "Django Welkin"
