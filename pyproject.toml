@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-welkin"
-version = "0.1.0"
+version = "0.0.1-alpha.6"
 description = "A Django app interfacing with the Welkin API."
 license = "GPL-3.0-or-later"
 authors = ["Sam Morgan <sam@lightmatter.com>"]
@@ -11,7 +11,7 @@ documentation = "https://django-welkin.readthedocs.io/"
 classifiers = [
     "Environment :: Web Environment",
     "Framework :: Django",
-    "Framework :: Django :: X.Y",
+    "Framework :: Django :: 4.0",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: BSD License",
     "Operating System :: OS Independent",
@@ -26,13 +26,13 @@ packages = [{include = "django_welkin"}]
 [tool.poetry.dependencies]
 python = "^3.10"
 welkin = "^0.0.6"
-Django = "^4.1.1"
 django-solo = "^2.0.0"
 
 [tool.poetry.group.dev]
 optional = true
 
 [tool.poetry.group.dev.dependencies]
+Django = "^4.0.0"
 black = "^22.8.0"
 isort = "^5.10.1"
 

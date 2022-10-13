@@ -93,7 +93,7 @@ class WebhookTests(TestCase):
         event = CalendarEvent.objects.get(id=payload["sourceId"])
         assert str(event.id) == payload["sourceId"]
         assert str(event.patient.id) == payload["patientId"]
-        assert str(event.provider) == "Sam Morgan"
+        assert str(event.user) == "Sam Morgan"
 
     @pytest.mark.vcr()
     def test_cdt_record(self):

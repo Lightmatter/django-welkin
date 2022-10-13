@@ -7,20 +7,21 @@ from django.utils.dateparse import parse_datetime
 from welkin.exceptions import WelkinHTTPError
 from welkin.models.formation import FormationDataType
 
-from ...models import CDT, CalendarEvent, CDTRecord, Patient, Provider, Welkin
+from ...models import CDT, CalendarEvent, CDTRecord, Patient, User
+from ...models.base import _Welkin
 
 
 # pylint: disable=no-member
 class Command(BaseCommand):
-    help = "Refresh Welkin provider and schedule data in the DB"  # noqa: A003
+    help = "Refresh Welkin data in the DB"  # noqa: A003
 
     def handle(self, *args, **options):
-        client = Welkin()
+        client = _Welkin()
 
-        # self.sync_patients(client)
-        # self.sync_providers(client)
-        # self.sync_calendar_events(client)
-        # self.sync_chat(client)
+        self.sync_patients(client)
+        self.sync_users(client)
+        self.sync_calendar_events(client)
+        self.sync_chat(client)
         self.sync_cdts(client)
         self.sync_cdt_records(client)
 
@@ -29,20 +30,26 @@ class Command(BaseCommand):
         for patient in client.Patients().get(paginate=True):
             Patient.objects.update_or_create(
                 id=patient.id,
-                defaults={"first_name": patient.firstName, "last_name": patient.lastName},
+                defaults={
+                    "first_name": patient.firstName,
+                    "last_name": patient.lastName,
+                },
             )
 
-    def sync_providers(self, client):
-        self.stdout.write("Refreshing providers")
+    def sync_users(self, client):
+        self.stdout.write("Refreshing users")
         for user in client.Users().get(paginate=True):
             for role in user.roles:
                 if role["instanceName"] != client.instance:
                     continue
 
                 if role["permissionName"] in ["health-coach", "physician"]:
-                    Provider.objects.update_or_create(
+                    User.objects.update_or_create(
                         id=user.id,
-                        defaults={"first_name": user.firstName, "last_name": user.lastName},
+                        defaults={
+                            "first_name": user.firstName,
+                            "last_name": user.lastName,
+                        },
                     )
                     break
 
@@ -56,7 +63,7 @@ class Command(BaseCommand):
             from_date=start, to_date=end, include_cancelled=True, paginate=True
         )
         for event in events:
-            provider = None
+            user = None
             patient = None
             for p in event.participants:
                 p_id = p["participantId"]
@@ -66,12 +73,14 @@ class Command(BaseCommand):
 
                 # Unsure if there are more roles than psm or patient
                 if role == "psm":
-                    provider, _ = Provider.objects.update_or_create(
-                        id=p_id, defaults={"first_name": first_name, "last_name": last_name}
+                    user, _ = User.objects.update_or_create(
+                        id=p_id,
+                        defaults={"first_name": first_name, "last_name": last_name},
                     )
                 elif role == "patient":
                     patient, _ = Patient.objects.update_or_create(
-                        id=p_id, defaults={"first_name": first_name, "last_name": last_name}
+                        id=p_id,
+                        defaults={"first_name": first_name, "last_name": last_name},
                     )
             try:
                 CalendarEvent.objects.update_or_create(
@@ -81,7 +90,7 @@ class Command(BaseCommand):
                         "start_time": parse_datetime(event.startDateTime),
                         "status": event.eventStatus,
                         "patient": patient,
-                        "provider": provider,
+                        "user": user,
                     },
                 )
             except IntegrityError:
@@ -104,7 +113,9 @@ class Command(BaseCommand):
             cdt.label = cdt.label or ""
 
             _, created = CDT.objects.update_or_create(id=cdt.id, defaults=cdt)
-            self.stdout.write(f'{"Created" if created else "Updated"} CDT {cdt["name"]}')
+            self.stdout.write(
+                f'{"Created" if created else "Updated"} CDT {cdt["name"]}'
+            )
 
     def sync_cdt_records(self, client):
         self.stdout.write("Refreshing CDTs")

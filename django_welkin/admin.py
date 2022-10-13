@@ -8,7 +8,7 @@ from .models import (
     CDTRecord,
     Configuration,
     Patient,
-    Provider,
+    User,
     WebhookMessage,
 )
 
@@ -52,8 +52,8 @@ class CDTRecordAdmin(admin.ModelAdmin):
     list_display = ("cdt", "version", "patient")
 
 
-@admin.register(Provider)
-class ProviderAdmin(admin.ModelAdmin):
+@admin.register(User)
+class UserAdmin(admin.ModelAdmin):
     pass
 
 
