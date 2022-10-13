@@ -4,8 +4,7 @@ import pytest
 from django.test import Client, TestCase
 from django.urls import reverse
 from django.utils import timezone
-
-from ..django_welkin.models import (
+from django_welkin.models import (
     CalendarEvent,
     CDTRecord,
     Chat,

@@ -1,13 +1,13 @@
 import json
 import uuid
+from pathlib import Path
 
 import pytest
-from django.conf import settings
-from environ import Env, Path
+from environ import Env
 from vcr import VCR
 
 env = Env()
-env.read_env(Path(settings.PROJDIR, ".env"))
+env.read_env(Path(__file__).parent.parent / ".env")
 
 
 def redact(field_name, extra=""):
