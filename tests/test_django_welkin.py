@@ -29,7 +29,7 @@ class WebhookTests(TestCase):
         self.client = Client(enforce_csrf_checks=True)
         self.url = self.url = reverse("welkin")
 
-        # baker.make_recipe("rind.welkin.configuration")
+        # baker.make_recipe("django_welkin.configuration")
 
         # Ensure token db is created
         Welkin().auth.token = {"token": "foo"}
@@ -158,7 +158,7 @@ class ChatWebhookTests(TestCase):
         )
         self.url = self.url = reverse("chat")
 
-        # baker.make_recipe("rind.welkin.configuration")
+        # baker.make_recipe("django_welkin.configuration")
 
         # Ensure token db is created
         Welkin().auth.token = {"token": "foo"}
