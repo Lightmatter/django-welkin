@@ -11,8 +11,8 @@ from django_welkin.models import (
     Configuration,
     Patient,
     WebhookMessage,
-    Welkin,
 )
+from django_welkin.models.base import _Welkin
 
 
 def check_model():
@@ -32,7 +32,7 @@ class WebhookTests(TestCase):
         # baker.make_recipe("django_welkin.configuration")
 
         # Ensure token db is created
-        Welkin().auth.token = {"token": "foo"}
+        _Welkin().auth.token = {"token": "foo"}
 
     def test_bad_method(self):
         response = self.client.get(self.url)
@@ -161,7 +161,7 @@ class ChatWebhookTests(TestCase):
         # baker.make_recipe("django_welkin.configuration")
 
         # Ensure token db is created
-        Welkin().auth.token = {"token": "foo"}
+        _Welkin().auth.token = {"token": "foo"}
 
     def test_bad_method(self):
         response = self.client.get(self.url)
