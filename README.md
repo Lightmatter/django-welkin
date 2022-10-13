@@ -10,11 +10,12 @@ Welkin is a Django app to connect to the Welkin Health API.
 pip install django-welkin
 ```
 
-2. Add "django-welkin" to your INSTALLED_APPS setting like this:
+2. Add django-welkin and django-solo to your INSTALLED_APPS setting like this:
 
 ```python
 INSTALLED_APPS = [
     ...
+    "solo",
     'django_welkin',
 ]
 ```
