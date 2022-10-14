@@ -1,0 +1,120 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Authorization:
+      - API_TOKEN_12b07113-fd44-4b2f-9db8-b72b08de5e4b
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-welkin/0.0.6
+    method: GET
+    uri: https://api.live.welkincloud.io/PdstOavxlpAGjbqsOILEsKAqUasIdJOYoOWGhjzYUwGVKXxJiNXNwRVkiVoyPzUkxsABdODUUWadmOAyCkweoiTKGlLZzDriCzsQbFnFbBWRDSNwbGDbyqIIyayKkwwLfWWifSOFwxNJDZkKlvMFqqAMBZvytHtLzmRkAcFvfBTrabjuIkpfkkgBGLKwflSNecQHLgVxXOrOrQHpPbYBtoggywqFtArveXlgpQVkNRCqocTFWsFzRXpWohgiDav/FzyeoOtSIxtTdPggawqZANTenJSgoIaMwJNdaMPkkHcgEuQAFprktkOahTrUWKrhZNrckdUJWDYjtgCkmHWNqltlJsqcEXkkVyXfpAonwKIGLvjxMuiYhUwPrUVCpUFNCjwSRrhDHtdghukCkqFLGsMjCAMgGOjujQxYoNkeiApbjeIYlusnGFrVmnaJOjsyIwITOfswAgRPfIKocWtqYKlWuVlnAcoqgMZmYbBKektwAQfxKAKpLxoKsifyTOT/calendar/events/834e4ab3-3e82-4a74-807c-bf0bb2b1308a
+  response:
+    body:
+      string: '[{"errorCode": "NOT_VALID_JSON_WEB_TOKEN", "componentType": "AUTH",
+        "message": "Not valid JWT", "details": {}, "date": "2022-10-14T00:48:06.076Z"}]'
+    headers:
+      Access-Control-Allow-Headers:
+      - authorization, content-type, xsrf-token, security-role
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE, PATCH, OPTIONS
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Expose-Headers:
+      - xsrf-token
+      Access-Control-Max-Age:
+      - '3600'
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Fri, 14 Oct 2022 00:48:06 GMT
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Set-Cookie:
+      - AWSALB=5sbPED5Ub6+EEMR3Q25N/adbVX8fV7bGsUDCQ6f9gpHvDkhazYCwrYLSi/F4rLhMBo1UIVDG+rp5FbnFkOgrqeln12PYbkhQfikrkcifH3JuJ5htd0AWiRWPJJuN;
+        Expires=Fri, 21 Oct 2022 00:48:06 GMT; Path=/
+      - AWSALBCORS=5sbPED5Ub6+EEMR3Q25N/adbVX8fV7bGsUDCQ6f9gpHvDkhazYCwrYLSi/F4rLhMBo1UIVDG+rp5FbnFkOgrqeln12PYbkhQfikrkcifH3JuJ5htd0AWiRWPJJuN;
+        Expires=Fri, 21 Oct 2022 00:48:06 GMT; Path=/; SameSite=None; Secure
+      Transfer-Encoding:
+      - chunked
+      X-Content-Type-Options:
+      - nosniff
+      X-XSS-Protection:
+      - 1; mode=block
+    status:
+      code: 401
+      message: ''
+- request:
+    body: '{"secret": "API_TOKEN_4d3cbe14-7ef5-4dbd-af75-5f9d6ebb931d"}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '269'
+      Content-Type:
+      - application/json
+      Cookie:
+      - AWSALB=5sbPED5Ub6+EEMR3Q25N/adbVX8fV7bGsUDCQ6f9gpHvDkhazYCwrYLSi/F4rLhMBo1UIVDG+rp5FbnFkOgrqeln12PYbkhQfikrkcifH3JuJ5htd0AWiRWPJJuN;
+        AWSALBCORS=5sbPED5Ub6+EEMR3Q25N/adbVX8fV7bGsUDCQ6f9gpHvDkhazYCwrYLSi/F4rLhMBo1UIVDG+rp5FbnFkOgrqeln12PYbkhQfikrkcifH3JuJ5htd0AWiRWPJJuN
+      User-Agent:
+      - python-welkin/0.0.6
+    method: POST
+    uri: https://api.live.welkincloud.io/PdstOavxlpAGjbqsOILEsKAqUasIdJOYoOWGhjzYUwGVKXxJiNXNwRVkiVoyPzUkxsABdODUUWadmOAyCkweoiTKGlLZzDriCzsQbFnFbBWRDSNwbGDbyqIIyayKkwwLfWWifSOFwxNJDZkKlvMFqqAMBZvytHtLzmRkAcFvfBTrabjuIkpfkkgBGLKwflSNecQHLgVxXOrOrQHpPbYBtoggywqFtArveXlgpQVkNRCqocTFWsFzRXpWohgiDav/admin/api_clients/SMqYNUTLlsSldCaJigEfmcbekXtvBaXjcfZGCudwlXmiXlraObGfxppFEACenNUdbAZEevmKMXlHPjbnPsBSCGqncjNgbsycNsPlDZVLkVboaPXmzaZJfWtxIoXbSVcVSDAIrtzcjCFINvWjSAuuAVNsNfedRXzWvBorqwTGtYjyYMYRyfVtbpcytRYCkPvtDspKqxMPJzeOVgcbCQnsWvAkfioQKQfDuPPMdFhskvqNJUnbgPgSixUnjfBbnKk
+  response:
+    body:
+      string: '[{"errorCode": "ORGANIZATION_NAME_NOT_FOUND", "componentType": "COMMON",
+        "message": "Organization not found", "details": {"name": "PdstOavxlpAGjbqsOILEsKAqUasIdJOYoOWGhjzYUwGVKXxJiNXNwRVkiVoyPzUkxsABdODUUWadmOAyCkweoiTKGlLZzDriCzsQbFnFbBWRDSNwbGDbyqIIyayKkwwLfWWifSOFwxNJDZkKlvMFqqAMBZvytHtLzmRkAcFvfBTrabjuIkpfkkgBGLKwflSNecQHLgVxXOrOrQHpPbYBtoggywqFtArveXlgpQVkNRCqocTFWsFzRXpWohgiDav"},
+        "date": "2022-10-14T00:48:06.168Z"}]'
+    headers:
+      Access-Control-Allow-Headers:
+      - authorization, content-type, xsrf-token, security-role
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE, PATCH, OPTIONS
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Expose-Headers:
+      - xsrf-token
+      Access-Control-Max-Age:
+      - '3600'
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Fri, 14 Oct 2022 00:48:06 GMT
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Set-Cookie:
+      - AWSALB=hKtYub9o6WcylCUjw18qLNX3oNohxvhQ4+EcIri6Fb4pcksX4CnC6ruDLkIHn639FWVlNArmZGC6q4RnpYciBC+5EU/AIh/6791A5PuVF6n2erpN8++j5AeTeFXo;
+        Expires=Fri, 21 Oct 2022 00:48:06 GMT; Path=/
+      - AWSALBCORS=hKtYub9o6WcylCUjw18qLNX3oNohxvhQ4+EcIri6Fb4pcksX4CnC6ruDLkIHn639FWVlNArmZGC6q4RnpYciBC+5EU/AIh/6791A5PuVF6n2erpN8++j5AeTeFXo;
+        Expires=Fri, 21 Oct 2022 00:48:06 GMT; Path=/; SameSite=None; Secure
+      Transfer-Encoding:
+      - chunked
+      X-Content-Type-Options:
+      - nosniff
+      X-XSS-Protection:
+      - 1; mode=block
+    status:
+      code: 404
+      message: ''
+version: 1

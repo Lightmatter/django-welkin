@@ -3,11 +3,24 @@ import uuid
 from pathlib import Path
 
 import pytest
+from django_welkin.models.base import _Welkin
 from environ import Env
+from model_bakery import baker
 from vcr import VCR
 
 env = Env()
 env.read_env(Path(__file__).parent.parent / ".env")
+
+
+@pytest.fixture(autouse=True)
+@pytest.mark.django_db
+def configuration():
+    config = baker.make_recipe("django_welkin.configuration")
+
+    # Ensure token db is created
+    _Welkin().auth.token = {"token": "foo"}
+
+    yield config
 
 
 def redact(field_name, extra=""):
