@@ -54,4 +54,4 @@ def test_chat(client):
 
     chat = Chat.objects.get(message=payload["message"])
     assert chat.message == payload["message"]
-    assert str(chat.patient.id) == payload["patientId"]
+    assert str(chat.patient_id) == payload["patientId"]
