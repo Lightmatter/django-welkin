@@ -1,7 +1,6 @@
+from django_welkin.models import Configuration
 from environ import Env
 from model_bakery.recipe import Recipe
-
-from .models import Configuration
 
 env = Env()
 

@@ -13,9 +13,8 @@ env.read_env(Path(__file__).parent.parent / ".env")
 
 
 @pytest.fixture(autouse=True)
-@pytest.mark.django_db
 def configuration():
-    config = baker.make_recipe("django_welkin.configuration")
+    config = baker.make_recipe("tests.configuration")
 
     # Ensure token db is created
     _Welkin().auth.token = {"token": "foo"}
