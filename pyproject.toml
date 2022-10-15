@@ -25,7 +25,7 @@ packages = [{include = "django_welkin"}]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-welkin = "^0.0.6"
+welkin = ">=0.0.6,<0.0.8"
 django-solo = "^2.0.0"
 
 [tool.poetry.group.dev]

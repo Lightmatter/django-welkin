@@ -449,7 +449,7 @@ yarl = "*"
 
 [[package]]
 name = "welkin"
-version = "0.0.6"
+version = "0.0.7"
 description = "Python Welkin Health API Wrapper."
 category = "main"
 optional = false
@@ -481,7 +481,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "92de404e036e1282281656b56f8e2dfd27f18518a21d19e42f8986f17648d366"
+content-hash = "86e7c5785b3727d2c8ea468e5d4c1ac50292c90181260d86decba764246f18f6"
 
 [metadata.files]
 asgiref = [
@@ -817,8 +817,8 @@ vcrpy = [
     {file = "vcrpy-4.2.1.tar.gz", hash = "sha256:7cd3e81a2c492e01c281f180bcc2a86b520b173d2b656cb5d89d99475423e013"},
 ]
 welkin = [
-    {file = "welkin-0.0.6-py3-none-any.whl", hash = "sha256:40ed89213710d06055fa91d68ea579be582cbc6f87479c24ab7a655f1272fd8a"},
-    {file = "welkin-0.0.6.tar.gz", hash = "sha256:9a8d2c77a6218f10dc3cb65affd3b3490c9a90d54635157747b7bee68a0ab29b"},
+    {file = "welkin-0.0.7-py3-none-any.whl", hash = "sha256:6817d372eac590ac5840f40b0f28955bfa6baabe4932517ebad1c2a42f0ccfc7"},
+    {file = "welkin-0.0.7.tar.gz", hash = "sha256:ef547d2ab9dfd5c29663a4e50bc83be42c55c18be126ffbe57c6668a6dc73891"},
 ]
 wrapt = [
     {file = "wrapt-1.14.1-cp27-cp27m-macosx_10_9_x86_64.whl", hash = "sha256:1b376b3f4896e7930f1f772ac4b064ac12598d1c38d04907e696cc4d794b43d3"},
