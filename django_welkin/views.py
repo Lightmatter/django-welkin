@@ -20,11 +20,11 @@ class EventEntity(Enum):
 @non_atomic_requests
 def webhook(request: HttpRequest) -> HttpResponse:
     payload = json.loads(request.body)
-
-    if payload == Configuration.get_test_payload():
-        return HttpResponse("Test payload received")
-
     WebhookMessage.objects.create(payload=payload)
+
+    if payload["eventEntity"] == "EVENT_ENTITY":
+        # IDEA: Do some actual test interactions when we receive a test payload.
+        return HttpResponse("Test payload received")
 
     try:
         process_webhook_payload(payload)
