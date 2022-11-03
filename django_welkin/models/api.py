@@ -34,7 +34,7 @@ class APIKey(models.Model):
     instance = models.OneToOneField(Instance, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.tenant}/{self.instance} API key"
+        return f"{self.instance.tenant}/{self.instance} API key"
 
     class Meta:
         verbose_name = _("API Key")
