@@ -37,30 +37,6 @@ class Patient(WelkinModel):
 
         self.save()
 
-    def sync_chat(self):
-        for chat in self.client.Patient(id=self.id).Chats().get(paginate=True):
-            user = None
-            if chat.sender["clientType"] == "USER":
-                try:
-                    user = User.objects.get(
-                        id=chat.sender["id"], instance=self.instance
-                    )
-                except User.DoesNotExist:
-                    user = User(id=chat.sender["id"], instance=self.instance)
-                    user.sync()
-
-            Chat = apps.get_model("django_welkin.Chat")
-            _, created = Chat.objects.get_or_create(
-                id=Chat.parse_uuid(chat.externalId),
-                message=chat.message,
-                created_at=parse_datetime(chat.createdAt),
-                instance=self.instance,
-                patient=self,
-                user=user,
-            )
-            if not created:
-                break
-
     def save(self, *args, **kwargs):
         if not self.pk:
             patient = self.client.Patient(

@@ -31,8 +31,43 @@ class Chat(WelkinModel):
     def parse_uuid(external_id):
         return uuid.UUID(external_id[2:])
 
+    @classmethod
+    def from_webhook(cls, payload):
+        try:
+            patient = Patient.objects.get(
+                id=payload["patientId"], instance__name=payload["instanceName"]
+            )
+        except Patient.DoesNotExist:
+            patient = Patient.from_webhook(payload)
+            patient.sync()
+
+        return cls(
+            patient=patient,
+            instance=patient.instance,
+        )
+
     def sync(self):
-        raise NotImplementedError("Chat is synced through the Patient model.")
+        for chat in self.client.Patient(id=self.patient.id).Chats().get(paginate=True):
+            user = None
+            if chat.sender["clientType"] == "USER":
+                try:
+                    user = User.objects.get(
+                        id=chat.sender["id"], instance=self.instance
+                    )
+                except User.DoesNotExist:
+                    user = User(id=chat.sender["id"], instance=self.instance)
+                    user.sync()
+
+            _, created = Chat.objects.get_or_create(
+                id=Chat.parse_uuid(chat.externalId),
+                message=chat.message,
+                created_at=parse_datetime(chat.createdAt),
+                instance=self.instance,
+                patient=self.patient,
+                user=user,
+            )
+            if not created:
+                break
 
     def save(self, *args, **kwargs):
         if not self.pk:
