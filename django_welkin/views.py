@@ -6,7 +6,7 @@ from django.http import HttpRequest, HttpResponse, HttpResponseBadRequest
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 
-from .models import CDT, CalendarEvent, CDTRecord, Instance, Patient, WebhookMessage
+from .models import CalendarEvent, CDTRecord, Chat, Patient, WebhookMessage
 
 
 class EventEntity(Enum):
@@ -69,12 +69,5 @@ def chat(request: HttpRequest) -> HttpResponse:
 
 @atomic
 def process_chat_payload(payload: dict) -> None:
-    try:
-        patient = Patient.objects.get(
-            id=payload["patientId"], instance__name=payload["instanceName"]
-        )
-    except Patient.DoesNotExist:
-        patient = Patient.from_webhook(payload)
-        patient.sync()
-
-    patient.sync_chat()
+    chat = Chat.from_webhook(payload)
+    chat.sync()
