@@ -6,7 +6,7 @@ from django.http import HttpRequest, HttpResponse, HttpResponseBadRequest
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 
-from .models import CDT, CalendarEvent, CDTRecord, Configuration, Patient, WebhookMessage
+from .models import CDT, CalendarEvent, CDTRecord, Instance, Patient, WebhookMessage
 
 
 class EventEntity(Enum):
@@ -22,10 +22,6 @@ def webhook(request: HttpRequest) -> HttpResponse:
     payload = json.loads(request.body)
     WebhookMessage.objects.create(payload=payload)
 
-    if payload["eventEntity"] == "EVENT_ENTITY":
-        # IDEA: Do some actual test interactions when we receive a test payload.
-        return HttpResponse("Test payload received")
-
     try:
         process_webhook_payload(payload)
     except KeyError as e:
@@ -33,25 +29,27 @@ def webhook(request: HttpRequest) -> HttpResponse:
     except NotImplementedError as e:
         return HttpResponseBadRequest(e)
 
+    if payload["eventEntity"] == "EVENT_ENTITY":
+        # IDEA: Do some actual test interactions when we receive a test payload.
+        return HttpResponse("Test payload received")
+
     return HttpResponse("Message stored.")
 
 
 @atomic
 def process_webhook_payload(payload: dict) -> None:
     entity = payload["eventEntity"]
+
+    if entity == "EVENT_ENTITY":
+        return
+
     try:
         model = EventEntity[entity].value
     except KeyError:
         raise NotImplementedError(f"{entity} is not a supported entity.")
 
-    obj = model(id=payload["sourceId"])
-
-    if isinstance(obj, CDTRecord):
-        # NOTE: I dislike having model-specific logic here. There's likely a better way.
-        obj.cdt = CDT.objects.get(name=payload["sourceName"])
-        obj.patient = Patient.objects.get(id=payload["patientId"])
-
-    obj.sync_from_welkin()
+    obj = model.from_webhook(payload)
+    obj.sync()
 
 
 @csrf_exempt
@@ -71,10 +69,12 @@ def chat(request: HttpRequest) -> HttpResponse:
 
 @atomic
 def process_chat_payload(payload: dict) -> None:
-    patient: Patient
-    patient, created = Patient.objects.get_or_create(id=payload["patientId"])
-
-    if created:
-        patient.sync_from_welkin()
+    try:
+        patient = Patient.objects.get(
+            id=payload["patientId"], instance__name=payload["instanceName"]
+        )
+    except Patient.DoesNotExist:
+        patient = Patient.from_webhook(payload)
+        patient.sync()
 
     patient.sync_chat()

@@ -4,9 +4,9 @@ import pytest
 from django.urls import reverse
 from django.utils import timezone
 from django_welkin.models import (
+    APIKey,
     CalendarEvent,
     CDTRecord,
-    Configuration,
     Patient,
     WebhookMessage,
 )
@@ -21,11 +21,11 @@ def test_bad_method(client):
 
 
 @pytest.mark.django_db
-def test_welkin_test(client):
+def test_dummy_payload(client, payload):
     response = client.post(
         reverse("welkin"),
         content_type="application/json",
-        data=Configuration.get_test_payload(),
+        data=payload,
     )
 
     assert response.status_code == HTTPStatus.OK
@@ -59,8 +59,8 @@ def test_missing_data(client):
 @pytest.mark.django_db
 def test_calendar_event(client):
     payload = {
-        "sourceId": "834e4ab3-3e82-4a74-807c-bf0bb2b1308a",
-        "patientId": "17450e44-c2c8-46c4-9486-0d9bfa16d3aa",
+        "sourceId": "2e8d4058-ce62-4b30-8b71-07df4eefbf55",
+        "patientId": "fcf051b7-1d8e-4912-b402-e2c436e4c2cc",
         "sourceName": "ENCOUNTER",
         "tenantName": "lightmatter",
         "eventEntity": "CALENDAR",
@@ -84,7 +84,7 @@ def test_calendar_event(client):
 
 @pytest.mark.vcr
 @pytest.mark.django_db
-def test_cdt_record(client):
+def test_cdt_record(client, api_key):
     payload = {
         "sourceId": "9be39258-9a81-4dc4-953a-630e4e5fc77b",
         "patientId": "89ec0634-50f3-40b1-981d-22ab39dd3037",
@@ -94,8 +94,12 @@ def test_cdt_record(client):
         "eventSubtype": "CDT_CREATED",
         "instanceName": "sandbox",
     }
-    baker.make("django_welkin.CDT", name=payload["sourceName"])
-    baker.make("django_welkin.Patient", id=payload["patientId"])
+    baker.make(
+        "django_welkin.CDT", name=payload["sourceName"], instance=api_key.instance
+    )
+    baker.make(
+        "django_welkin.Patient", id=payload["patientId"], instance=api_key.instance
+    )
 
     response = client.post(
         reverse("welkin"),
@@ -116,8 +120,8 @@ def test_cdt_record(client):
 @pytest.mark.django_db
 def test_patient(client):
     payload = {
-        "sourceId": "49ec74c2-7368-4932-a98f-e5298622c191",
-        "patientId": "49ec74c2-7368-4932-a98f-e5298622c191",
+        "sourceId": "fcf051b7-1d8e-4912-b402-e2c436e4c2cc",
+        "patientId": "fcf051b7-1d8e-4912-b402-e2c436e4c2cc",
         "sourceName": "Webhook Patient",
         "tenantName": "lightmatter",
         "eventEntity": "PATIENT",

@@ -7,30 +7,17 @@ interactions:
       Accept-Encoding:
       - gzip, deflate, br
       Authorization:
-      - API_TOKEN_c59fadcd-9c61-44c3-be50-8b9f19f66fc1
+      - API_TOKEN_4466b4be-011c-4b00-b62e-d2efd0197c7b
       Connection:
       - keep-alive
       User-Agent:
-      - python-welkin/0.0.5
+      - python-welkin/0.0.7
     method: GET
-    uri: https://api.live.welkincloud.io/tenant_REDACTED/instance_REDACTED/patients/49ec74c2-7368-4932-a98f-e5298622c191
+    uri: https://api.live.welkincloud.io/tenant_REDACTED/instance_REDACTED/patients/fcf051b7-1d8e-4912-b402-e2c436e4c2cc
   response:
     body:
-      string: '{"id": "49ec74c2-7368-4932-a98f-e5298622c191", "externalGuid": null,
-        "externalId": null, "mrn": null, "nric": null, "createdAt": "2022-08-04T03:00:34.494Z",
-        "updatedAt": "2022-08-04T03:00:34.494Z", "createdBy": "createdBy_REDACTED_f1684586-2a7e-4fff-8046-605fca59fc40",
-        "updatedBy": "updatedBy_REDACTED_99592459-dfbd-4774-928e-ebea058bc2f2", "createdByName":
-        "createdByName_REDACTED_c08d0d13-e66b-4c15-896f-8c8e7b2a7865", "updatedByName":
-        "updatedByName_REDACTED_2dd1d2f6-4184-423a-88b0-f35c9e7c5447", "firstName":
-        "Webhook", "lastName": "Patient", "middleName": null, "birthDate": null, "gender":
-        "UNKNOWN", "maritalStatus": "UKN", "primaryLanguage": "ENGLISH", "secondaryLanguage":
-        null, "email": null, "secondaryEmail": null, "phone": null, "primaryPhoneCapabilities":
-        [], "secondaryPhone": null, "secondaryPhoneCapabilities": [], "country": null,
-        "state": null, "city": null, "zip": null, "addressLine1": null, "addressLine2":
-        null, "timezone": "US/Pacific", "patientTerritories": [], "careTeamMembers":
-        [], "patientPrograms": [], "careTeam": [], "cadence": [], "patientRegion":
-        null, "patientRegionTitle": null, "patientTerritory": null, "pointOfContact":
-        null}'
+      string: '[{"errorCode": "NOT_VALID_JSON_WEB_TOKEN", "componentType": "AUTH",
+        "message": "Not valid JWT", "details": {}, "date": "2022-11-03T00:03:41.771Z"}]'
     headers:
       Access-Control-Allow-Headers:
       - authorization, content-type, xsrf-token, security-role
@@ -49,16 +36,148 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Thu, 15 Sep 2022 02:54:24 GMT
+      - Thu, 03 Nov 2022 00:03:41 GMT
       Expires:
       - '0'
       Pragma:
       - no-cache
       Set-Cookie:
-      - AWSALB=j0rOAG9YwFSOATfZ93RkDrSY86Pb2jJ9+pGujn3RXpi8imY7flsI4gwXrbP3yuw1eBX1uOMsOrMx2ZFQwhhqyDPeSS4ZcFrxQZtT3241qZJCfcfj5mnntqFCOxy5;
-        Expires=Thu, 22 Sep 2022 02:54:24 GMT; Path=/
-      - AWSALBCORS=j0rOAG9YwFSOATfZ93RkDrSY86Pb2jJ9+pGujn3RXpi8imY7flsI4gwXrbP3yuw1eBX1uOMsOrMx2ZFQwhhqyDPeSS4ZcFrxQZtT3241qZJCfcfj5mnntqFCOxy5;
-        Expires=Thu, 22 Sep 2022 02:54:24 GMT; Path=/; SameSite=None; Secure
+      - AWSALB=nGxdxxIXVuO77YPUIKq4r3y28h+ng4Bqj8upJ19Wbc3p7HDIKZarAwcxIY6WBX/H0SC9sHMrI9OTii0D+b4f48tUpEVA/RXuCapSu6s0GofRzNQCod1UggSzMddO;
+        Expires=Thu, 10 Nov 2022 00:03:41 GMT; Path=/
+      - AWSALBCORS=nGxdxxIXVuO77YPUIKq4r3y28h+ng4Bqj8upJ19Wbc3p7HDIKZarAwcxIY6WBX/H0SC9sHMrI9OTii0D+b4f48tUpEVA/RXuCapSu6s0GofRzNQCod1UggSzMddO;
+        Expires=Thu, 10 Nov 2022 00:03:41 GMT; Path=/; SameSite=None; Secure
+      Transfer-Encoding:
+      - chunked
+      X-Content-Type-Options:
+      - nosniff
+      X-XSS-Protection:
+      - 1; mode=block
+    status:
+      code: 401
+      message: ''
+- request:
+    body: '{"secret": "API_TOKEN_f3ea5e2b-0688-46e9-9930-d572ba69e4f4"}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate, br
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '34'
+      Content-Type:
+      - application/json
+      Cookie:
+      - AWSALB=nGxdxxIXVuO77YPUIKq4r3y28h+ng4Bqj8upJ19Wbc3p7HDIKZarAwcxIY6WBX/H0SC9sHMrI9OTii0D+b4f48tUpEVA/RXuCapSu6s0GofRzNQCod1UggSzMddO;
+        AWSALBCORS=nGxdxxIXVuO77YPUIKq4r3y28h+ng4Bqj8upJ19Wbc3p7HDIKZarAwcxIY6WBX/H0SC9sHMrI9OTii0D+b4f48tUpEVA/RXuCapSu6s0GofRzNQCod1UggSzMddO
+      User-Agent:
+      - python-welkin/0.0.7
+    method: POST
+    uri: https://api.live.welkincloud.io/tenant_REDACTED/admin/api_clients/api_client_REDACTED
+  response:
+    body:
+      string: '{"token": "token_REDACTED_a0ebf5b2-72e7-49bf-a19c-c0388009c6f9"}'
+    headers:
+      Access-Control-Allow-Headers:
+      - authorization, content-type, xsrf-token, security-role
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE, PATCH, OPTIONS
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Expose-Headers:
+      - xsrf-token
+      Access-Control-Max-Age:
+      - '3600'
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 03 Nov 2022 00:03:42 GMT
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Set-Cookie:
+      - AWSALB=PIF70pP1PrAyr42b3mZvrGXu4C+CRvNr/jIX5WG2teGhDYrsxuQPSN938+MUaU4CmPJzeMrf8XiE5uT30dIlhIEra1F8bNrSpGEmiXaYb2mMxU6EwI5TBQPab3/1;
+        Expires=Thu, 10 Nov 2022 00:03:41 GMT; Path=/
+      - AWSALBCORS=PIF70pP1PrAyr42b3mZvrGXu4C+CRvNr/jIX5WG2teGhDYrsxuQPSN938+MUaU4CmPJzeMrf8XiE5uT30dIlhIEra1F8bNrSpGEmiXaYb2mMxU6EwI5TBQPab3/1;
+        Expires=Thu, 10 Nov 2022 00:03:41 GMT; Path=/; SameSite=None; Secure
+      Transfer-Encoding:
+      - chunked
+      X-Content-Type-Options:
+      - nosniff
+      X-XSS-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate, br
+      Authorization:
+      - API_TOKEN_4466b4be-011c-4b00-b62e-d2efd0197c7b
+      Connection:
+      - keep-alive
+      Cookie:
+      - AWSALB=PIF70pP1PrAyr42b3mZvrGXu4C+CRvNr/jIX5WG2teGhDYrsxuQPSN938+MUaU4CmPJzeMrf8XiE5uT30dIlhIEra1F8bNrSpGEmiXaYb2mMxU6EwI5TBQPab3/1;
+        AWSALBCORS=PIF70pP1PrAyr42b3mZvrGXu4C+CRvNr/jIX5WG2teGhDYrsxuQPSN938+MUaU4CmPJzeMrf8XiE5uT30dIlhIEra1F8bNrSpGEmiXaYb2mMxU6EwI5TBQPab3/1
+      User-Agent:
+      - python-welkin/0.0.7
+    method: GET
+    uri: https://api.live.welkincloud.io/tenant_REDACTED/instance_REDACTED/patients/fcf051b7-1d8e-4912-b402-e2c436e4c2cc
+  response:
+    body:
+      string: '{"createdByName": "createdByName_REDACTED_bb7d7c24-5c11-4dd1-9609-3d7fcd97463b",
+        "lastName": "Patient", "country": null, "secondaryEmail": null, "gender":
+        "UNKNOWN", "city": null, "timezone": null, "careTeamMembers": [], "secondaryPhoneCapabilities":
+        [], "createdAt": "2022-11-02T23:46:43.250Z", "addressLine1": null, "addressLine2":
+        null, "id": "fcf051b7-1d8e-4912-b402-e2c436e4c2cc", "state": null, "secondaryLanguage":
+        null, "email": null, "careTeam": [], "updatedAt": "2022-11-02T23:46:43.250Z",
+        "primaryPhoneCapabilities": [], "pointOfContact": null, "zip": null, "updatedBy":
+        "updatedBy_REDACTED_eb1bd0e2-0fe3-4aad-950a-4c08c6ff4967", "updatedByName":
+        "updatedByName_REDACTED_9b0c78d8-123b-4c40-8d23-fcdeab0551bd", "mrn": null,
+        "externalId": null, "externalGuid": null, "patientPrograms": [], "nric": null,
+        "birthDate": null, "cadence": [], "firstName": "Webhook", "patientRegionTitle":
+        null, "createdBy": "createdBy_REDACTED_271e87e0-7e4b-4dea-bb6c-7906bfd4079f",
+        "phone": null, "middleName": null, "patientTerritories": [], "patientRegion":
+        null, "maritalStatus": "UKN", "primaryLanguage": "ENGLISH", "secondaryPhone":
+        null, "patientTerritory": null}'
+    headers:
+      Access-Control-Allow-Headers:
+      - authorization, content-type, xsrf-token, security-role
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE, PATCH, OPTIONS
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Expose-Headers:
+      - xsrf-token
+      Access-Control-Max-Age:
+      - '3600'
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 03 Nov 2022 00:03:42 GMT
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Set-Cookie:
+      - AWSALB=JS/pg4b6QF3H93j4LBdDLEjHRUXJrH7EfWhLq/x9UEQp4FglVEjxKSKE3zf3WSY3Jlg6Rg3ISY1bqjy2Z9k+PIZRBtjzx2ddRgQtD/L9ccnb2KXyqd14FY/I5krq;
+        Expires=Thu, 10 Nov 2022 00:03:42 GMT; Path=/
+      - AWSALBCORS=JS/pg4b6QF3H93j4LBdDLEjHRUXJrH7EfWhLq/x9UEQp4FglVEjxKSKE3zf3WSY3Jlg6Rg3ISY1bqjy2Z9k+PIZRBtjzx2ddRgQtD/L9ccnb2KXyqd14FY/I5krq;
+        Expires=Thu, 10 Nov 2022 00:03:42 GMT; Path=/; SameSite=None; Secure
       Transfer-Encoding:
       - chunked
       X-Content-Type-Options:

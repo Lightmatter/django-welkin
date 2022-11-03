@@ -1,18 +1,19 @@
 from django import forms
 
-from .models import Chat, Configuration
+from .models import APIKey, Chat
 
 
-class ConfigurationForm(forms.ModelForm):
+class APIKeyForm(forms.ModelForm):
     class Meta:
-        model = Configuration
-        fields = ["tenant", "instance", "api_client", "secret_key"]
+        model = APIKey
+        fields = ["instance", "api_client", "secret_key"]
         widgets = {"secret_key": forms.PasswordInput(render_value=True)}
 
 
 class ChatForm(forms.ModelForm):
     message = forms.CharField(
-        label="message", widget=forms.TextInput(attrs={"placeholder": "Send a message..."})
+        label="message",
+        widget=forms.TextInput(attrs={"placeholder": "Send a message..."}),
     )
 
     class Meta:

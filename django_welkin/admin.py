@@ -1,21 +1,12 @@
 from django.contrib import admin
-from solo.admin import SingletonModelAdmin
 
-from .forms import ConfigurationForm
-from .models import (
-    CDT,
-    CalendarEvent,
-    CDTRecord,
-    Configuration,
-    Patient,
-    User,
-    WebhookMessage,
-)
+from .forms import APIKeyForm
+from .models import CDT, APIKey, CalendarEvent, CDTRecord, Patient, User, WebhookMessage
 
 
-@admin.register(Configuration)
-class ConfigurationAdmin(SingletonModelAdmin):
-    form = ConfigurationForm
+@admin.register(APIKey)
+class APIKeyAdmin(admin.ModelAdmin):
+    form = APIKeyForm
 
 
 @admin.register(WebhookMessage)

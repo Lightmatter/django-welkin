@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from .base import WelkinModel, _Welkin
+from .base import WelkinModel
 from .patient import Patient
 
 
@@ -28,10 +28,9 @@ class CDT(WelkinModel):
     def __str__(self):
         return self.name
 
-    def sync_from_welkin(self):
+    def sync(self):
         raise NotImplementedError(
-            "This model is installed using the 'welkin_load_configuration <filename>' "
-            "admin command."
+            "This model is installed using the 'welkin_sync_models' admin command."
         )
 
 
@@ -49,10 +48,19 @@ class CDTRecord(WelkinModel):
     def __str__(self):
         return f"{self.cdt.name} record"
 
-    def sync_from_welkin(self):
-        cdt_record = (
-            _Welkin().Patient(id=self.patient.id).CDT(cdtName=self.cdt.name, id=self.id)
-        ).get()
+    @classmethod
+    def from_webhook(cls, payload):
+        cls = super().from_webhook(payload)
+        cls.cdt = CDT.objects.get(name=payload["sourceName"], instance=cls.instance)
+        cls.patient = Patient.objects.get(
+            id=payload["patientId"], instance=cls.instance
+        )
+
+        return cls
+
+    def sync(self):
+        patient = self.client.Patient(id=self.patient.id)
+        cdt_record = patient.CDT(cdtName=self.cdt.name, id=self.id).get()
 
         self.version = cdt_record["version"]
         self.body = cdt_record["jsonBody"]

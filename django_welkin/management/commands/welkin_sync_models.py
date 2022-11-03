@@ -8,7 +8,7 @@ from welkin.exceptions import WelkinHTTPError
 from welkin.models.formation import FormationDataType
 
 from ...models import CDT, CalendarEvent, CDTRecord, Patient, User
-from ...models.base import _Welkin
+from ...models.api import APIKey
 
 
 # pylint: disable=no-member
@@ -16,14 +16,15 @@ class Command(BaseCommand):
     help = "Refresh Welkin data in the DB"  # noqa: A003
 
     def handle(self, *args, **options):
-        client = _Welkin()
+        for api_key in APIKey.objects.all():
+            client = api_key.client
 
-        self.sync_patients(client)
-        self.sync_users(client)
-        self.sync_calendar_events(client)
-        self.sync_chat(client)
-        self.sync_cdts(client)
-        self.sync_cdt_records(client)
+            self.sync_patients(client)
+            self.sync_users(client)
+            self.sync_calendar_events(client)
+            self.sync_chat(client)
+            self.sync_cdts(client)
+            self.sync_cdt_records(client)
 
     def sync_patients(self, client):
         self.stdout.write("Refreshing patients")
@@ -113,9 +114,7 @@ class Command(BaseCommand):
             cdt.label = cdt.label or ""
 
             _, created = CDT.objects.update_or_create(id=cdt.id, defaults=cdt)
-            self.stdout.write(
-                f'{"Created" if created else "Updated"} CDT {cdt["name"]}'
-            )
+            self.stdout.write(f'{"Created" if created else "Updated"} CDT {cdt["name"]}')
 
     def sync_cdt_records(self, client):
         self.stdout.write("Refreshing CDTs")

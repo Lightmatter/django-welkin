@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.dateparse import parse_datetime
 from django.utils.translation import gettext_lazy as _
 
-from .base import WelkinModel, _Welkin
+from .base import WelkinModel
 from .patient import Patient
 from .user import User
 
@@ -22,8 +22,8 @@ class CalendarEvent(WelkinModel):
     def __str__(self):
         return self.id
 
-    def sync_from_welkin(self):
-        event = _Welkin().CalendarEvent(id=self.id).get()
+    def sync(self):
+        event = self.client.CalendarEvent(id=self.id).get()
 
         self.title = event.eventTitle
         self.start_time = parse_datetime(event.startDateTime)
@@ -31,18 +31,20 @@ class CalendarEvent(WelkinModel):
 
         for p in event.participants:
             p_id = p["participantId"]
-            first_name = p["firstName"]
-            last_name = p["lastName"]
             role = p["participantRole"]
 
             # Unsure if there are more roles than psm or patient
             if role == "psm":
-                self.user, _ = User.objects.update_or_create(
-                    id=p_id, first_name=first_name, last_name=last_name
-                )
+                try:
+                    self.user = User.objects.get(id=p_id, instance=self.instance)
+                except User.DoesNotExist:
+                    self.user = User(id=p_id, instance=self.instance)
+                    self.user.sync()
             elif role == "patient":
-                self.patient, _ = Patient.objects.update_or_create(
-                    id=p_id, first_name=first_name, last_name=last_name
-                )
+                try:
+                    self.patient = Patient.objects.get(id=p_id, instance=self.instance)
+                except Patient.DoesNotExist:
+                    self.patient = Patient(id=p_id, instance=self.instance)
+                    self.patient.sync()
 
         self.save()
