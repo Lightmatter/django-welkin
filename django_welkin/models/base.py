@@ -1,26 +1,28 @@
 from django.db import models
-from welkin import Client
 
-from .configuration import Configuration
-
-
-class _Welkin(Client):
-    def __init__(self, *args, **kwargs):
-        config = Configuration.objects.get()
-        kwargs["tenant"] = config.tenant
-        kwargs["instance"] = config.instance
-        kwargs["api_client"] = config.api_client
-        kwargs["secret_key"] = config.secret_key
-
-        super().__init__(*args, **kwargs)
+from .api import APIKey, Instance
 
 
 class WelkinModel(models.Model):
-
     id = models.UUIDField(primary_key=True, editable=False)
+
+    instance = models.ForeignKey(Instance, on_delete=models.CASCADE)
 
     class Meta:
         abstract = True
 
-    def sync_from_welkin(self):
+    @classmethod
+    def from_webhook(cls, payload):
+        return cls(
+            id=payload["sourceId"],
+            instance=Instance.objects.get(name=payload["instanceName"]),
+        )
+
+    def sync(self):
         raise NotImplementedError("This method must be implemented in concrete models.")
+
+    @property
+    def client(self):
+        key = APIKey.objects.get(instance=self.instance)
+
+        return key._client

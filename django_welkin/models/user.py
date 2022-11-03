@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from .base import WelkinModel, _Welkin
+from .base import WelkinModel
 
 
 class User(WelkinModel):
@@ -15,8 +15,8 @@ class User(WelkinModel):
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
 
-    def sync_from_welkin(self):
-        user = _Welkin().User(id=self.id).get()
+    def sync(self):
+        user = self.client.User(id=self.id).get()
 
         self.first_name = user.firstName
         self.last_name = user.lastName

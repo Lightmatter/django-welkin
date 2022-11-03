@@ -3,7 +3,7 @@ import uuid
 from pathlib import Path
 
 import pytest
-from django_welkin.models.base import _Welkin
+from django_welkin.models.api import APIKey
 from environ import Env
 from model_bakery import baker
 from vcr import VCR
@@ -13,13 +13,27 @@ env.read_env(Path(__file__).parent.parent / ".env")
 
 
 @pytest.fixture(autouse=True)
-def configuration():
-    config = baker.make_recipe("tests.configuration")
+def api_key():
+    api_key = baker.make_recipe("tests.api_key")
 
     # Ensure token db is created
-    _Welkin().auth.token = {"token": "foo"}
+    api_key._client.auth.token = {"token": "foo"}
 
-    yield config
+    yield api_key
+
+
+@pytest.fixture
+def payload(api_key):
+    return {
+        "sourceId": "SOURCE_ID",
+        "eventSubtype": "EVENT_SUBTYPE",
+        "tenantName": api_key.instance.tenant.name,
+        "instanceName": api_key.instance.name,
+        "patientId": "PATIENT_ID",
+        "eventEntity": "EVENT_ENTITY",
+        "sourceName": "SOURCE_NAME",
+        "url": "URL",
+    }
 
 
 def redact(field_name, extra=""):

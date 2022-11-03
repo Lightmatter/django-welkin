@@ -34,14 +34,21 @@ def test_missing_data(client):
 
 @pytest.mark.vcr
 @pytest.mark.django_db
-def test_chat(client):
+def test_chat(client, api_key):
     payload = {
         "patientId": "17450e44-c2c8-46c4-9486-0d9bfa16d3aa",
         "tenantName": "lightmatter",
         "instanceName": "sandbox",
         "message": "Give me a message",
     }
-    baker.make("django_welkin.Patient", id=payload["patientId"])
+    baker.make(
+        "django_welkin.Patient", id=payload["patientId"], instance=api_key.instance
+    )
+    baker.make(
+        "django_welkin.User",
+        id="d2b3d940-01ec-44f3-a2cd-b5298823ec9f",
+        instance=api_key.instance,
+    )
 
     response = client.post(
         reverse("chat"),
