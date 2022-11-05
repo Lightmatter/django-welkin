@@ -1,11 +1,13 @@
 import json
+import os
 import uuid
 from pathlib import Path
+from typing import Generator
 
 import pytest
-from django_welkin.models.api import APIKey
 from environ import Env
 from model_bakery import baker
+from playwright.sync_api import Playwright
 from vcr import VCR
 
 env = Env()
@@ -34,6 +36,17 @@ def payload(api_key):
         "sourceName": "SOURCE_NAME",
         "url": "URL",
     }
+
+
+@pytest.fixture(scope="session")
+def playwright(playwright: Playwright) -> Generator[Playwright, None, None]:
+    """Override of playwright fixture so we can set up for use with Django.
+
+    Background: https://github.com/microsoft/playwright-python/issues/439
+    """
+    os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"
+
+    yield playwright
 
 
 def redact(field_name, extra=""):
