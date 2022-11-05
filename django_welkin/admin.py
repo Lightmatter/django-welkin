@@ -1,12 +1,43 @@
 from django.contrib import admin
 
 from .forms import APIKeyForm
-from .models import CDT, APIKey, CalendarEvent, CDTRecord, Patient, User, WebhookMessage
+from .models import (
+    CDT,
+    APIKey,
+    CalendarEvent,
+    CDTRecord,
+    Instance,
+    Patient,
+    Tenant,
+    User,
+    WebhookMessage,
+)
 
 
 @admin.register(APIKey)
 class APIKeyAdmin(admin.ModelAdmin):
     form = APIKeyForm
+    autocomplete_fields = [
+        "instance",
+    ]
+
+
+@admin.register(Instance)
+class InstanceAdmin(admin.ModelAdmin):
+    autocomplete_fields = [
+        "tenant",
+    ]
+    search_fields = [
+        "name",
+        "tenant",
+    ]
+
+
+@admin.register(Tenant)
+class TenantAdmin(admin.ModelAdmin):
+    search_fields = [
+        "name",
+    ]
 
 
 @admin.register(WebhookMessage)
