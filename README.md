@@ -15,14 +15,14 @@ pip install django-welkin
 ```python
 INSTALLED_APPS = [
     ...
-    'welkin',
+    'django_welkin',
 ]
 ```
 
 3. Include the django-welkin URLconf in your project urls.py like this:
 
 ```python
-path('welkin/', include('welkin.urls')),
+path('welkin/', include('django_welkin.urls')),
 ```
 
 4. Run `python manage.py migrate` to create the welkin models.
