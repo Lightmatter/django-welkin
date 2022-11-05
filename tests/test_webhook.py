@@ -3,13 +3,7 @@ from http import HTTPStatus
 import pytest
 from django.urls import reverse
 from django.utils import timezone
-from django_welkin.models import (
-    APIKey,
-    CalendarEvent,
-    CDTRecord,
-    Patient,
-    WebhookMessage,
-)
+from django_welkin.models import CalendarEvent, CDTRecord, Patient, WebhookMessage
 from model_bakery import baker
 
 
