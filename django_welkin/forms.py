@@ -6,7 +6,7 @@ from .models import APIKey, Chat
 class APIKeyForm(forms.ModelForm):
     class Meta:
         model = APIKey
-        fields = ["instance", "api_client", "secret_key"]
+        fields = ["api_client", "secret_key", "instance"]
         widgets = {"secret_key": forms.PasswordInput(render_value=True)}
 
 
