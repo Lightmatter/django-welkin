@@ -9,7 +9,7 @@ from model_bakery import baker
 
 @pytest.mark.django_db
 def test_bad_method(client):
-    response = client.get(reverse("chat"))
+    response = client.get(reverse("welkin"))
 
     assert response.status_code == HTTPStatus.METHOD_NOT_ALLOWED
 
@@ -19,7 +19,7 @@ def test_missing_data(client):
     payload = {}
     start = timezone.now()
     response = client.post(
-        reverse("chat"),
+        reverse("welkin"),
         content_type="application/json",
         data=payload,
     )
@@ -51,7 +51,7 @@ def test_chat(client, api_key):
     )
 
     response = client.post(
-        reverse("chat"),
+        reverse("welkin"),
         content_type="application/json",
         data=payload,
     )

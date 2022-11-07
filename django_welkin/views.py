@@ -13,6 +13,7 @@ class EventEntity(Enum):
     CALENDAR = CalendarEvent
     CDT = CDTRecord
     PATIENT = Patient
+    CHAT = Chat
 
 
 @csrf_exempt
@@ -38,6 +39,9 @@ def webhook(request: HttpRequest) -> HttpResponse:
 
 @atomic
 def process_webhook_payload(payload: dict) -> None:
+    if "message" in payload:
+        payload["eventEntity"] = "CHAT"
+
     entity = payload["eventEntity"]
 
     if entity == "EVENT_ENTITY":
@@ -50,24 +54,3 @@ def process_webhook_payload(payload: dict) -> None:
 
     obj = model.from_webhook(payload)
     obj.sync()
-
-
-@csrf_exempt
-@require_POST
-@non_atomic_requests
-def chat(request: HttpRequest) -> HttpResponse:
-    payload = json.loads(request.body)
-    WebhookMessage.objects.create(payload=payload)
-
-    try:
-        process_chat_payload(payload)
-    except KeyError as e:
-        return HttpResponseBadRequest(f"Payload missing {e}")
-
-    return HttpResponse("Message stored.")
-
-
-@atomic
-def process_chat_payload(payload: dict) -> None:
-    chat = Chat.from_webhook(payload)
-    chat.sync()
