@@ -46,8 +46,19 @@ class Chat(WelkinModel):
             instance=patient.instance,
         )
 
+    def save(self, *args, **kwargs):
+        if not self.pk:
+            chat = self.client.Patient(id=self.patient_id).Chat(message=self.message)
+            chat.create()
+
+            self.id = Chat.parse_uuid(chat.externalId)
+            self.message = chat.message
+            self.created_at = parse_datetime(chat.createdAt)
+
+        super().save(*args, **kwargs)
+
     def sync(self):
-        for chat in self.client.Patient(id=self.patient.id).Chats().get(paginate=True):
+        for chat in self.client.Patient(id=self.patient_id).Chats().get(paginate=True):
             user = None
             if chat.sender["clientType"] == "USER":
                 try:
@@ -68,14 +79,3 @@ class Chat(WelkinModel):
             )
             if not created:
                 break
-
-    def save(self, *args, **kwargs):
-        if not self.pk:
-            chat = self.client.Patient(id=self.patient.id).Chat(message=self.message)
-            chat.create()
-
-            self.id = Chat.parse_uuid(chat.externalId)
-            self.message = chat.message
-            self.created_at = parse_datetime(chat.createdAt)
-
-        super().save(*args, **kwargs)
