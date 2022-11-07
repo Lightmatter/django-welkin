@@ -59,7 +59,7 @@ class CDTRecord(WelkinModel):
         return cls
 
     def sync(self):
-        patient = self.client.Patient(id=self.patient.id)
+        patient = self.client.Patient(id=self.patient_id)
         cdt_record = patient.CDT(cdtName=self.cdt.name, id=self.id).get()
 
         self.version = cdt_record["version"]

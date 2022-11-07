@@ -72,7 +72,7 @@ def test_calendar_event(client):
 
     event = CalendarEvent.objects.get(id=payload["sourceId"])
     assert str(event.id) == payload["sourceId"]
-    assert str(event.patient.id) == payload["patientId"]
+    assert str(event.patient_id) == payload["patientId"]
     assert str(event.user) == "Sam Morgan"
 
 
@@ -106,7 +106,7 @@ def test_cdt_record(client, api_key):
 
     cdt_record = CDTRecord.objects.get(id=payload["sourceId"])
     assert str(cdt_record.id) == payload["sourceId"]
-    assert str(cdt_record.patient.id) == payload["patientId"]
+    assert str(cdt_record.patient_id) == payload["patientId"]
     assert cdt_record.version == 27
 
 

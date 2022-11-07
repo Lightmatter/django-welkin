@@ -1,11 +1,10 @@
-from django.apps import apps
 from django.conf import settings
 from django.db import models
 from django.utils.dateparse import parse_datetime
 from django.utils.translation import gettext_lazy as _
 
 from .base import WelkinModel
-from .user import User
+
 
 
 class Patient(WelkinModel):
@@ -32,7 +31,7 @@ class Patient(WelkinModel):
         self.first_name = patient.firstName
         self.last_name = patient.lastName
         self.middle_name = patient.middleName
-        self.birth_date = patient.birthDate
+        self.birth_date = parse_datetime(patient.birthDate)
         self.gender = patient.gender
 
         self.save()
