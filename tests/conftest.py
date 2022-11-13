@@ -1,11 +1,13 @@
 import json
+import os
 import uuid
 from pathlib import Path
+from typing import Generator
 
 import pytest
-from django_welkin.models.base import _Welkin
 from environ import Env
 from model_bakery import baker
+from playwright.sync_api import Playwright
 from vcr import VCR
 
 env = Env()
@@ -13,13 +15,38 @@ env.read_env(Path(__file__).parent.parent / ".env")
 
 
 @pytest.fixture(autouse=True)
-def configuration():
-    config = baker.make_recipe("tests.configuration")
+def api_key():
+    api_key = baker.make_recipe("tests.api_key")
 
     # Ensure token db is created
-    _Welkin().auth.token = {"token": "foo"}
+    api_key._client.auth.token = {"token": "foo"}
 
-    yield config
+    yield api_key
+
+
+@pytest.fixture
+def payload(api_key):
+    return {
+        "sourceId": "SOURCE_ID",
+        "eventSubtype": "EVENT_SUBTYPE",
+        "tenantName": api_key.instance.tenant.name,
+        "instanceName": api_key.instance.name,
+        "patientId": "PATIENT_ID",
+        "eventEntity": "EVENT_ENTITY",
+        "sourceName": "SOURCE_NAME",
+        "url": "URL",
+    }
+
+
+@pytest.fixture(scope="session")
+def playwright(playwright: Playwright) -> Generator[Playwright, None, None]:
+    """Override of playwright fixture so we can set up for use with Django.
+
+    Background: https://github.com/microsoft/playwright-python/issues/439
+    """
+    os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"
+
+    yield playwright
 
 
 def redact(field_name, extra=""):

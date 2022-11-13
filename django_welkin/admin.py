@@ -1,21 +1,43 @@
 from django.contrib import admin
-from solo.admin import SingletonModelAdmin
 
-from .forms import ConfigurationForm
+from .forms import APIKeyForm
 from .models import (
     CDT,
+    APIKey,
     CalendarEvent,
     CDTRecord,
-    Configuration,
+    Instance,
     Patient,
+    Tenant,
     User,
     WebhookMessage,
 )
 
 
-@admin.register(Configuration)
-class ConfigurationAdmin(SingletonModelAdmin):
-    form = ConfigurationForm
+@admin.register(APIKey)
+class APIKeyAdmin(admin.ModelAdmin):
+    form = APIKeyForm
+    autocomplete_fields = [
+        "instance",
+    ]
+
+
+@admin.register(Instance)
+class InstanceAdmin(admin.ModelAdmin):
+    autocomplete_fields = [
+        "tenant",
+    ]
+    search_fields = [
+        "name",
+        "tenant",
+    ]
+
+
+@admin.register(Tenant)
+class TenantAdmin(admin.ModelAdmin):
+    search_fields = [
+        "name",
+    ]
 
 
 @admin.register(WebhookMessage)
