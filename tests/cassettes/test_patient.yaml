@@ -7,7 +7,7 @@ interactions:
       Accept-Encoding:
       - gzip, deflate, br
       Authorization:
-      - API_TOKEN_4466b4be-011c-4b00-b62e-d2efd0197c7b
+      - API_TOKEN_441097fb-50e3-4944-a820-65dadcc6c9a5
       Connection:
       - keep-alive
       User-Agent:
@@ -17,7 +17,7 @@ interactions:
   response:
     body:
       string: '[{"errorCode": "NOT_VALID_JSON_WEB_TOKEN", "componentType": "AUTH",
-        "message": "Not valid JWT", "details": {}, "date": "2022-11-03T00:03:41.771Z"}]'
+        "message": "Not valid JWT", "details": {}, "date": "2022-11-13T16:51:06.155Z"}]'
     headers:
       Access-Control-Allow-Headers:
       - authorization, content-type, xsrf-token, security-role
@@ -36,16 +36,16 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Thu, 03 Nov 2022 00:03:41 GMT
+      - Sun, 13 Nov 2022 16:51:06 GMT
       Expires:
       - '0'
       Pragma:
       - no-cache
       Set-Cookie:
-      - AWSALB=nGxdxxIXVuO77YPUIKq4r3y28h+ng4Bqj8upJ19Wbc3p7HDIKZarAwcxIY6WBX/H0SC9sHMrI9OTii0D+b4f48tUpEVA/RXuCapSu6s0GofRzNQCod1UggSzMddO;
-        Expires=Thu, 10 Nov 2022 00:03:41 GMT; Path=/
-      - AWSALBCORS=nGxdxxIXVuO77YPUIKq4r3y28h+ng4Bqj8upJ19Wbc3p7HDIKZarAwcxIY6WBX/H0SC9sHMrI9OTii0D+b4f48tUpEVA/RXuCapSu6s0GofRzNQCod1UggSzMddO;
-        Expires=Thu, 10 Nov 2022 00:03:41 GMT; Path=/; SameSite=None; Secure
+      - AWSALB=ykuYYFl1k+7chc7fLXKddNe9BqPp3blWyBcH1azEnPQtvn4+x9zf2kDI+U1WaC88MFn8AeLk8QVfz3HNq3DAyCxYEjG9ciSFK31oDaRBkvrK2AqGLW+C47z3AtyS;
+        Expires=Sun, 20 Nov 2022 16:51:06 GMT; Path=/
+      - AWSALBCORS=ykuYYFl1k+7chc7fLXKddNe9BqPp3blWyBcH1azEnPQtvn4+x9zf2kDI+U1WaC88MFn8AeLk8QVfz3HNq3DAyCxYEjG9ciSFK31oDaRBkvrK2AqGLW+C47z3AtyS;
+        Expires=Sun, 20 Nov 2022 16:51:06 GMT; Path=/; SameSite=None; Secure
       Transfer-Encoding:
       - chunked
       X-Content-Type-Options:
@@ -56,7 +56,7 @@ interactions:
       code: 401
       message: ''
 - request:
-    body: '{"secret": "API_TOKEN_f3ea5e2b-0688-46e9-9930-d572ba69e4f4"}'
+    body: '{"secret": "API_TOKEN_b4dc6814-c5e5-4e2d-b840-fdd118af52d5"}'
     headers:
       Accept:
       - '*/*'
@@ -69,15 +69,15 @@ interactions:
       Content-Type:
       - application/json
       Cookie:
-      - AWSALB=nGxdxxIXVuO77YPUIKq4r3y28h+ng4Bqj8upJ19Wbc3p7HDIKZarAwcxIY6WBX/H0SC9sHMrI9OTii0D+b4f48tUpEVA/RXuCapSu6s0GofRzNQCod1UggSzMddO;
-        AWSALBCORS=nGxdxxIXVuO77YPUIKq4r3y28h+ng4Bqj8upJ19Wbc3p7HDIKZarAwcxIY6WBX/H0SC9sHMrI9OTii0D+b4f48tUpEVA/RXuCapSu6s0GofRzNQCod1UggSzMddO
+      - AWSALB=ykuYYFl1k+7chc7fLXKddNe9BqPp3blWyBcH1azEnPQtvn4+x9zf2kDI+U1WaC88MFn8AeLk8QVfz3HNq3DAyCxYEjG9ciSFK31oDaRBkvrK2AqGLW+C47z3AtyS;
+        AWSALBCORS=ykuYYFl1k+7chc7fLXKddNe9BqPp3blWyBcH1azEnPQtvn4+x9zf2kDI+U1WaC88MFn8AeLk8QVfz3HNq3DAyCxYEjG9ciSFK31oDaRBkvrK2AqGLW+C47z3AtyS
       User-Agent:
       - python-welkin/0.0.7
     method: POST
     uri: https://api.live.welkincloud.io/tenant_REDACTED/admin/api_clients/api_client_REDACTED
   response:
     body:
-      string: '{"token": "token_REDACTED_a0ebf5b2-72e7-49bf-a19c-c0388009c6f9"}'
+      string: '{"token": "token_REDACTED_aca531ae-686d-4405-8883-9bedd21557b8"}'
     headers:
       Access-Control-Allow-Headers:
       - authorization, content-type, xsrf-token, security-role
@@ -96,16 +96,16 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Thu, 03 Nov 2022 00:03:42 GMT
+      - Sun, 13 Nov 2022 16:51:06 GMT
       Expires:
       - '0'
       Pragma:
       - no-cache
       Set-Cookie:
-      - AWSALB=PIF70pP1PrAyr42b3mZvrGXu4C+CRvNr/jIX5WG2teGhDYrsxuQPSN938+MUaU4CmPJzeMrf8XiE5uT30dIlhIEra1F8bNrSpGEmiXaYb2mMxU6EwI5TBQPab3/1;
-        Expires=Thu, 10 Nov 2022 00:03:41 GMT; Path=/
-      - AWSALBCORS=PIF70pP1PrAyr42b3mZvrGXu4C+CRvNr/jIX5WG2teGhDYrsxuQPSN938+MUaU4CmPJzeMrf8XiE5uT30dIlhIEra1F8bNrSpGEmiXaYb2mMxU6EwI5TBQPab3/1;
-        Expires=Thu, 10 Nov 2022 00:03:41 GMT; Path=/; SameSite=None; Secure
+      - AWSALB=aLNixtEhltSSRAtkcZ/OTUkHGLUbAIPadpcLZOdaEKErWcTZUw2s4fH642xRpBh4DvtRksnD85z+uX+nusrny1obxI68kv926CWYu987FNbEODyb6JuOdo3ljJCl;
+        Expires=Sun, 20 Nov 2022 16:51:06 GMT; Path=/
+      - AWSALBCORS=aLNixtEhltSSRAtkcZ/OTUkHGLUbAIPadpcLZOdaEKErWcTZUw2s4fH642xRpBh4DvtRksnD85z+uX+nusrny1obxI68kv926CWYu987FNbEODyb6JuOdo3ljJCl;
+        Expires=Sun, 20 Nov 2022 16:51:06 GMT; Path=/; SameSite=None; Secure
       Transfer-Encoding:
       - chunked
       X-Content-Type-Options:
@@ -123,30 +123,34 @@ interactions:
       Accept-Encoding:
       - gzip, deflate, br
       Authorization:
-      - API_TOKEN_4466b4be-011c-4b00-b62e-d2efd0197c7b
+      - API_TOKEN_441097fb-50e3-4944-a820-65dadcc6c9a5
       Connection:
       - keep-alive
       Cookie:
-      - AWSALB=PIF70pP1PrAyr42b3mZvrGXu4C+CRvNr/jIX5WG2teGhDYrsxuQPSN938+MUaU4CmPJzeMrf8XiE5uT30dIlhIEra1F8bNrSpGEmiXaYb2mMxU6EwI5TBQPab3/1;
-        AWSALBCORS=PIF70pP1PrAyr42b3mZvrGXu4C+CRvNr/jIX5WG2teGhDYrsxuQPSN938+MUaU4CmPJzeMrf8XiE5uT30dIlhIEra1F8bNrSpGEmiXaYb2mMxU6EwI5TBQPab3/1
+      - AWSALB=aLNixtEhltSSRAtkcZ/OTUkHGLUbAIPadpcLZOdaEKErWcTZUw2s4fH642xRpBh4DvtRksnD85z+uX+nusrny1obxI68kv926CWYu987FNbEODyb6JuOdo3ljJCl;
+        AWSALBCORS=aLNixtEhltSSRAtkcZ/OTUkHGLUbAIPadpcLZOdaEKErWcTZUw2s4fH642xRpBh4DvtRksnD85z+uX+nusrny1obxI68kv926CWYu987FNbEODyb6JuOdo3ljJCl
       User-Agent:
       - python-welkin/0.0.7
     method: GET
     uri: https://api.live.welkincloud.io/tenant_REDACTED/instance_REDACTED/patients/fcf051b7-1d8e-4912-b402-e2c436e4c2cc
   response:
     body:
-      string: '{"createdByName": "createdByName_REDACTED_bb7d7c24-5c11-4dd1-9609-3d7fcd97463b",
+      string: '{"createdByName": "createdByName_REDACTED_6bbd1322-77e7-42cc-8116-d883b3d574d4",
         "lastName": "Patient", "country": null, "secondaryEmail": null, "gender":
-        "UNKNOWN", "city": null, "timezone": null, "careTeamMembers": [], "secondaryPhoneCapabilities":
-        [], "createdAt": "2022-11-02T23:46:43.250Z", "addressLine1": null, "addressLine2":
-        null, "id": "fcf051b7-1d8e-4912-b402-e2c436e4c2cc", "state": null, "secondaryLanguage":
-        null, "email": null, "careTeam": [], "updatedAt": "2022-11-02T23:46:43.250Z",
-        "primaryPhoneCapabilities": [], "pointOfContact": null, "zip": null, "updatedBy":
-        "updatedBy_REDACTED_eb1bd0e2-0fe3-4aad-950a-4c08c6ff4967", "updatedByName":
-        "updatedByName_REDACTED_9b0c78d8-123b-4c40-8d23-fcdeab0551bd", "mrn": null,
-        "externalId": null, "externalGuid": null, "patientPrograms": [], "nric": null,
-        "birthDate": null, "cadence": [], "firstName": "Webhook", "patientRegionTitle":
-        null, "createdBy": "createdBy_REDACTED_271e87e0-7e4b-4dea-bb6c-7906bfd4079f",
+        "UNKNOWN", "city": null, "timezone": null, "careTeamMembers": [{"id": "a559fa83-e3ec-4773-8ed7-3bc069d1f7c4",
+        "pointOfContact": true}], "secondaryPhoneCapabilities": [], "createdAt": "2022-11-02T23:46:43.250Z",
+        "accessCode": null, "addressLine1": null, "addressLine2": null, "id": "fcf051b7-1d8e-4912-b402-e2c436e4c2cc",
+        "state": null, "secondaryLanguage": null, "email": null, "careTeam": [{"id":
+        "a559fa83-e3ec-4773-8ed7-3bc069d1f7c4", "username": "sam", "firstName": "Sam",
+        "lastName": "Morgan", "email": "sam@lightmatter.com", "roles": [{"name": "r-admin",
+        "primaryRole": true}], "pointOfContact": true, "enabled": true}], "updatedAt":
+        "2022-11-07T15:59:18.267Z", "primaryPhoneCapabilities": [], "pointOfContact":
+        {"id": "a559fa83-e3ec-4773-8ed7-3bc069d1f7c4", "pointOfContact": true}, "zip":
+        null, "updatedBy": "updatedBy_REDACTED_2ede852d-ec77-46b5-92dc-ec29a013e2de",
+        "updatedByName": "updatedByName_REDACTED_6dd374c9-cfe0-4932-a561-0136a0257629",
+        "mrn": null, "externalId": null, "externalGuid": null, "patientPrograms":
+        [], "nric": null, "birthDate": null, "cadence": [], "firstName": "Webhook",
+        "patientRegionTitle": null, "createdBy": "createdBy_REDACTED_69c06a9f-bd42-4774-94f9-f9c88b1bee3c",
         "phone": null, "middleName": null, "patientTerritories": [], "patientRegion":
         null, "maritalStatus": "UKN", "primaryLanguage": "ENGLISH", "secondaryPhone":
         null, "patientTerritory": null}'
@@ -168,16 +172,16 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Thu, 03 Nov 2022 00:03:42 GMT
+      - Sun, 13 Nov 2022 16:51:07 GMT
       Expires:
       - '0'
       Pragma:
       - no-cache
       Set-Cookie:
-      - AWSALB=JS/pg4b6QF3H93j4LBdDLEjHRUXJrH7EfWhLq/x9UEQp4FglVEjxKSKE3zf3WSY3Jlg6Rg3ISY1bqjy2Z9k+PIZRBtjzx2ddRgQtD/L9ccnb2KXyqd14FY/I5krq;
-        Expires=Thu, 10 Nov 2022 00:03:42 GMT; Path=/
-      - AWSALBCORS=JS/pg4b6QF3H93j4LBdDLEjHRUXJrH7EfWhLq/x9UEQp4FglVEjxKSKE3zf3WSY3Jlg6Rg3ISY1bqjy2Z9k+PIZRBtjzx2ddRgQtD/L9ccnb2KXyqd14FY/I5krq;
-        Expires=Thu, 10 Nov 2022 00:03:42 GMT; Path=/; SameSite=None; Secure
+      - AWSALB=PDQJKuUJ9NxiECb5f7obTvOl7mnCw7jSaTx/CCX2fIoZEyAlQ4+n4eBZQEfCv5CxruuB2N91Ht3uKbhonXdw+VLR24QGVGpmV6uYBkT2UIdWE83hLveb8nYFsP/s;
+        Expires=Sun, 20 Nov 2022 16:51:06 GMT; Path=/
+      - AWSALBCORS=PDQJKuUJ9NxiECb5f7obTvOl7mnCw7jSaTx/CCX2fIoZEyAlQ4+n4eBZQEfCv5CxruuB2N91Ht3uKbhonXdw+VLR24QGVGpmV6uYBkT2UIdWE83hLveb8nYFsP/s;
+        Expires=Sun, 20 Nov 2022 16:51:06 GMT; Path=/; SameSite=None; Secure
       Transfer-Encoding:
       - chunked
       X-Content-Type-Options:

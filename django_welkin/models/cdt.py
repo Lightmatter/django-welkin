@@ -51,9 +51,11 @@ class CDTRecord(WelkinModel):
     @classmethod
     def from_webhook(cls, payload):
         cls = super().from_webhook(payload)
-        cls.cdt = CDT.objects.get(name=payload["sourceName"], instance=cls.instance)
+        cls.cdt = CDT.objects.get(
+            name=payload["sourceName"], instance_id=cls.instance_id
+        )
         cls.patient = Patient.objects.get(
-            id=payload["patientId"], instance=cls.instance
+            id=payload["patientId"], instance_id=cls.instance_id
         )
 
         return cls

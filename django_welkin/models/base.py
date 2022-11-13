@@ -23,6 +23,6 @@ class WelkinModel(models.Model):
 
     @property
     def client(self):
-        key = APIKey.objects.get(instance=self.instance)
+        key = APIKey.objects.get(instance_id=self.instance_id)
 
         return key._client
