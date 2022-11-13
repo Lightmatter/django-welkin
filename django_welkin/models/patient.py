@@ -69,7 +69,7 @@ class Patient(WelkinModel):
 
         self.first_name = patient.firstName
         self.last_name = patient.lastName
-        self.middle_name = patient.middleName
+        self.middle_name = patient.middleName or ""
         self.gender = patient.gender
 
         if patient.birthDate:
