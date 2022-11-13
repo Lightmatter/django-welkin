@@ -151,23 +151,13 @@ def test_patient(client, payload):
 
 @pytest.mark.vcr
 @pytest.mark.django_db
-def test_chat(client, api_key):
+def test_chat(client):
     payload = {
         "patientId": "fcf051b7-1d8e-4912-b402-e2c436e4c2cc",
         "tenantName": "lightmatter",
         "instanceName": "sandbox",
         "message": "Energy equals mass times the speed of light squared.",
     }
-    baker.make(
-        "django_welkin.Patient",
-        id=payload["patientId"],
-        instance_id=api_key.instance_id,
-    )
-    baker.make(
-        "django_welkin.User",
-        id="d2b3d940-01ec-44f3-a2cd-b5298823ec9f",
-        instance_id=api_key.instance_id,
-    )
 
     response = client.post(
         reverse("welkin"),
