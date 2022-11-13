@@ -3,7 +3,7 @@ name: Python 🐍 package 📦 versioning
 on:
   pull_request:
     branches:
-      - master
+      - main
 
 jobs:
   check-version:
