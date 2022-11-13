@@ -3,8 +3,9 @@ from http import HTTPStatus
 import pytest
 from django.urls import reverse
 from django.utils import timezone
-from django_welkin.models import Chat, WebhookMessage
 from model_bakery import baker
+
+from django_welkin.models import Chat, WebhookMessage
 
 
 @pytest.mark.django_db
@@ -36,10 +37,10 @@ def test_missing_data(client):
 @pytest.mark.django_db
 def test_chat(client, api_key):
     payload = {
-        "patientId": "17450e44-c2c8-46c4-9486-0d9bfa16d3aa",
+        "patientId": "fcf051b7-1d8e-4912-b402-e2c436e4c2cc",
         "tenantName": "lightmatter",
         "instanceName": "sandbox",
-        "message": "Give me a message",
+        "message": "Energy equals mass times the speed of light squared.",
     }
     baker.make(
         "django_welkin.Patient", id=payload["patientId"], instance=api_key.instance
