@@ -43,7 +43,7 @@ class Chat(WelkinModel):
 
         return cls(
             patient=patient,
-            instance=patient.instance,
+            instance_id=patient.instance_id,
         )
 
     def save(self, *args, **kwargs):
@@ -63,17 +63,17 @@ class Chat(WelkinModel):
             if chat.sender["clientType"] == "USER":
                 try:
                     user = User.objects.get(
-                        id=chat.sender["id"], instance=self.instance
+                        id=chat.sender["id"], instance_id=self.instance_id
                     )
                 except User.DoesNotExist:
-                    user = User(id=chat.sender["id"], instance=self.instance)
+                    user = User(id=chat.sender["id"], instance_id=self.instance_id)
                     user.sync()
 
             _, created = Chat.objects.get_or_create(
                 id=Chat.parse_uuid(chat.externalId),
                 message=chat.message,
                 created_at=parse_datetime(chat.createdAt),
-                instance=self.instance,
+                instance_id=self.instance_id,
                 patient=self.patient,
                 user=user,
             )

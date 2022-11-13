@@ -43,12 +43,14 @@ def test_chat(client, api_key):
         "message": "Energy equals mass times the speed of light squared.",
     }
     baker.make(
-        "django_welkin.Patient", id=payload["patientId"], instance=api_key.instance
+        "django_welkin.Patient",
+        id=payload["patientId"],
+        instance_id=api_key.instance_id,
     )
     baker.make(
         "django_welkin.User",
         id="d2b3d940-01ec-44f3-a2cd-b5298823ec9f",
-        instance=api_key.instance,
+        instance_id=api_key.instance_id,
     )
 
     response = client.post(

@@ -3,8 +3,9 @@ from http import HTTPStatus
 import pytest
 from django.urls import reverse
 from django.utils import timezone
-from django_welkin.models import CalendarEvent, CDTRecord, Patient, WebhookMessage
 from model_bakery import baker
+
+from django_welkin.models import CalendarEvent, CDTRecord, Patient, WebhookMessage
 
 
 @pytest.mark.django_db
@@ -51,16 +52,21 @@ def test_missing_data(client):
 
 @pytest.mark.vcr
 @pytest.mark.django_db
-def test_calendar_event(client):
-    payload = {
-        "sourceId": "2e8d4058-ce62-4b30-8b71-07df4eefbf55",
-        "patientId": "fcf051b7-1d8e-4912-b402-e2c436e4c2cc",
-        "sourceName": "ENCOUNTER",
-        "tenantName": "lightmatter",
-        "eventEntity": "CALENDAR",
-        "eventSubtype": "CALENDAR_EVENT_UPDATED",
-        "instanceName": "sandbox",
-    }
+def test_calendar_event(client, api_key, payload):
+    payload.update(
+        {
+            "sourceId": "2e8d4058-ce62-4b30-8b71-07df4eefbf55",
+            "patientId": "fcf051b7-1d8e-4912-b402-e2c436e4c2cc",
+            "sourceName": "ENCOUNTER",
+            "eventEntity": "CALENDAR",
+            "eventSubtype": "CALENDAR_EVENT_UPDATED",
+        }
+    )
+    baker.make(
+        "django_welkin.Patient",
+        id=payload["patientId"],
+        instance_id=api_key.instance_id,
+    )
     response = client.post(
         reverse("welkin"),
         content_type="application/json",
@@ -78,21 +84,23 @@ def test_calendar_event(client):
 
 @pytest.mark.vcr
 @pytest.mark.django_db
-def test_cdt_record(client, api_key):
-    payload = {
-        "sourceId": "9be39258-9a81-4dc4-953a-630e4e5fc77b",
-        "patientId": "89ec0634-50f3-40b1-981d-22ab39dd3037",
-        "sourceName": "insurance",
-        "tenantName": "lightmatter",
-        "eventEntity": "CDT",
-        "eventSubtype": "CDT_CREATED",
-        "instanceName": "sandbox",
-    }
-    baker.make(
-        "django_welkin.CDT", name=payload["sourceName"], instance=api_key.instance
+def test_cdt_record(client, api_key, payload):
+    payload.update(
+        {
+            "sourceId": "31fabd93-2153-4518-b2ce-6fdb1892cf42",
+            "eventSubtype": "CDT_UPDATED",
+            "patientId": "fcf051b7-1d8e-4912-b402-e2c436e4c2cc",
+            "eventEntity": "CDT",
+            "sourceName": "_asm-appointment-checkin",
+        }
     )
     baker.make(
-        "django_welkin.Patient", id=payload["patientId"], instance=api_key.instance
+        "django_welkin.CDT", name=payload["sourceName"], instance_id=api_key.instance_id
+    )
+    baker.make(
+        "django_welkin.Patient",
+        id=payload["patientId"],
+        instance_id=api_key.instance_id,
     )
 
     response = client.post(
@@ -107,21 +115,21 @@ def test_cdt_record(client, api_key):
     cdt_record = CDTRecord.objects.get(id=payload["sourceId"])
     assert str(cdt_record.id) == payload["sourceId"]
     assert str(cdt_record.patient_id) == payload["patientId"]
-    assert cdt_record.version == 27
+    assert cdt_record.version == 11
 
 
 @pytest.mark.vcr
 @pytest.mark.django_db
-def test_patient(client):
-    payload = {
-        "sourceId": "fcf051b7-1d8e-4912-b402-e2c436e4c2cc",
-        "patientId": "fcf051b7-1d8e-4912-b402-e2c436e4c2cc",
-        "sourceName": "Webhook Patient",
-        "tenantName": "lightmatter",
-        "eventEntity": "PATIENT",
-        "eventSubtype": "PATIENT_CREATED",
-        "instanceName": "sandbox",
-    }
+def test_patient(client, payload):
+    payload.update(
+        {
+            "sourceId": "fcf051b7-1d8e-4912-b402-e2c436e4c2cc",
+            "patientId": "fcf051b7-1d8e-4912-b402-e2c436e4c2cc",
+            "sourceName": "Webhook Patient",
+            "eventEntity": "PATIENT",
+            "eventSubtype": "PATIENT_CREATED",
+        }
+    )
 
     response = client.post(
         reverse("welkin"),

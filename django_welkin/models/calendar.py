@@ -36,15 +36,17 @@ class CalendarEvent(WelkinModel):
             # Unsure if there are more roles than psm or patient
             if role == "psm":
                 try:
-                    self.user = User.objects.get(id=p_id, instance=self.instance)
+                    self.user = User.objects.get(id=p_id, instance_id=self.instance_id)
                 except User.DoesNotExist:
-                    self.user = User(id=p_id, instance=self.instance)
+                    self.user = User(id=p_id, instance_id=self.instance_id)
                     self.user.sync()
             elif role == "patient":
                 try:
-                    self.patient = Patient.objects.get(id=p_id, instance=self.instance)
+                    self.patient = Patient.objects.get(
+                        id=p_id, instance_id=self.instance_id
+                    )
                 except Patient.DoesNotExist:
-                    self.patient = Patient(id=p_id, instance=self.instance)
+                    self.patient = Patient(id=p_id, instance_id=self.instance_id)
                     self.patient.sync()
 
         self.save()

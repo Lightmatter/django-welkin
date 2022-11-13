@@ -7,7 +7,7 @@ interactions:
       Accept-Encoding:
       - gzip, deflate, br
       Authorization:
-      - API_TOKEN_c36e62bc-54fc-4a08-b4be-b02a9b07af7f
+      - API_TOKEN_441097fb-50e3-4944-a820-65dadcc6c9a5
       Connection:
       - keep-alive
       User-Agent:
@@ -17,7 +17,7 @@ interactions:
   response:
     body:
       string: '[{"errorCode": "NOT_VALID_JSON_WEB_TOKEN", "componentType": "AUTH",
-        "message": "Not valid JWT", "details": {}, "date": "2022-11-13T16:29:49.886Z"}]'
+        "message": "Not valid JWT", "details": {}, "date": "2022-11-13T16:51:01.146Z"}]'
     headers:
       Access-Control-Allow-Headers:
       - authorization, content-type, xsrf-token, security-role
@@ -36,16 +36,16 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Sun, 13 Nov 2022 16:29:49 GMT
+      - Sun, 13 Nov 2022 16:51:01 GMT
       Expires:
       - '0'
       Pragma:
       - no-cache
       Set-Cookie:
-      - AWSALB=4OjSJ0eisGSGlwxqsRMsGA4qNbmN1JuYMJFTZ34GPD+DaDqwNnzAYlGDtgSZPvfCaXkOV9vsfiJqqXRuV6FEPxKqu3XGtNWvW7pV5i41FWwsWWP6Z2gPLYlQXf6i;
-        Expires=Sun, 20 Nov 2022 16:29:49 GMT; Path=/
-      - AWSALBCORS=4OjSJ0eisGSGlwxqsRMsGA4qNbmN1JuYMJFTZ34GPD+DaDqwNnzAYlGDtgSZPvfCaXkOV9vsfiJqqXRuV6FEPxKqu3XGtNWvW7pV5i41FWwsWWP6Z2gPLYlQXf6i;
-        Expires=Sun, 20 Nov 2022 16:29:49 GMT; Path=/; SameSite=None; Secure
+      - AWSALB=7sw5Hw/oLGy4IpIkRCZHdSK34k6xb1Z+COyNX8zEpuGiULlz88errZ3G58YvJnDUoemOaThRBMPvYXLnSxWi9yhXrqBRMWEN8n4W5qLN3Piw39C4q9ZJyy/14k5l;
+        Expires=Sun, 20 Nov 2022 16:51:01 GMT; Path=/
+      - AWSALBCORS=7sw5Hw/oLGy4IpIkRCZHdSK34k6xb1Z+COyNX8zEpuGiULlz88errZ3G58YvJnDUoemOaThRBMPvYXLnSxWi9yhXrqBRMWEN8n4W5qLN3Piw39C4q9ZJyy/14k5l;
+        Expires=Sun, 20 Nov 2022 16:51:01 GMT; Path=/; SameSite=None; Secure
       Transfer-Encoding:
       - chunked
       X-Content-Type-Options:
@@ -56,7 +56,7 @@ interactions:
       code: 401
       message: ''
 - request:
-    body: '{"secret": "API_TOKEN_5fa98f38-8856-4d36-9b83-21726f358d5f"}'
+    body: '{"secret": "API_TOKEN_b4dc6814-c5e5-4e2d-b840-fdd118af52d5"}'
     headers:
       Accept:
       - '*/*'
@@ -69,15 +69,15 @@ interactions:
       Content-Type:
       - application/json
       Cookie:
-      - AWSALB=4OjSJ0eisGSGlwxqsRMsGA4qNbmN1JuYMJFTZ34GPD+DaDqwNnzAYlGDtgSZPvfCaXkOV9vsfiJqqXRuV6FEPxKqu3XGtNWvW7pV5i41FWwsWWP6Z2gPLYlQXf6i;
-        AWSALBCORS=4OjSJ0eisGSGlwxqsRMsGA4qNbmN1JuYMJFTZ34GPD+DaDqwNnzAYlGDtgSZPvfCaXkOV9vsfiJqqXRuV6FEPxKqu3XGtNWvW7pV5i41FWwsWWP6Z2gPLYlQXf6i
+      - AWSALB=7sw5Hw/oLGy4IpIkRCZHdSK34k6xb1Z+COyNX8zEpuGiULlz88errZ3G58YvJnDUoemOaThRBMPvYXLnSxWi9yhXrqBRMWEN8n4W5qLN3Piw39C4q9ZJyy/14k5l;
+        AWSALBCORS=7sw5Hw/oLGy4IpIkRCZHdSK34k6xb1Z+COyNX8zEpuGiULlz88errZ3G58YvJnDUoemOaThRBMPvYXLnSxWi9yhXrqBRMWEN8n4W5qLN3Piw39C4q9ZJyy/14k5l
       User-Agent:
       - python-welkin/0.0.7
     method: POST
     uri: https://api.live.welkincloud.io/tenant_REDACTED/admin/api_clients/api_client_REDACTED
   response:
     body:
-      string: '{"token": "token_REDACTED_163c2cb3-18ea-4ca5-9a86-cbc0a60f9b76"}'
+      string: '{"token": "token_REDACTED_a97a67f9-a4ee-44a1-a09b-da8911c26e4b"}'
     headers:
       Access-Control-Allow-Headers:
       - authorization, content-type, xsrf-token, security-role
@@ -96,16 +96,16 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Sun, 13 Nov 2022 16:29:50 GMT
+      - Sun, 13 Nov 2022 16:51:01 GMT
       Expires:
       - '0'
       Pragma:
       - no-cache
       Set-Cookie:
-      - AWSALB=Pbj6BXt8m+TauJaOrVXFO9P6BjtpTzsNUDltfJmIjPPNC5Tp4meIOLcQXzi53ZtiXuxFclnTdzo4P4e6CNp+503gCknUDOSVlKkj0oFEvhgQl6e30w7blqD9mHWR;
-        Expires=Sun, 20 Nov 2022 16:29:49 GMT; Path=/
-      - AWSALBCORS=Pbj6BXt8m+TauJaOrVXFO9P6BjtpTzsNUDltfJmIjPPNC5Tp4meIOLcQXzi53ZtiXuxFclnTdzo4P4e6CNp+503gCknUDOSVlKkj0oFEvhgQl6e30w7blqD9mHWR;
-        Expires=Sun, 20 Nov 2022 16:29:49 GMT; Path=/; SameSite=None; Secure
+      - AWSALB=z/MQon21syLZ3xdm2rU7C5ZKLqdnnFe2DHkclRWOmGsA1NrFCyDT15v29sOOnPrdtTRcC7tLHzbWSKmz6ZCGq/E+SxeZgPOQ/Re7URB66H473XTK9azxUvFLbJ/f;
+        Expires=Sun, 20 Nov 2022 16:51:01 GMT; Path=/
+      - AWSALBCORS=z/MQon21syLZ3xdm2rU7C5ZKLqdnnFe2DHkclRWOmGsA1NrFCyDT15v29sOOnPrdtTRcC7tLHzbWSKmz6ZCGq/E+SxeZgPOQ/Re7URB66H473XTK9azxUvFLbJ/f;
+        Expires=Sun, 20 Nov 2022 16:51:01 GMT; Path=/; SameSite=None; Secure
       Transfer-Encoding:
       - chunked
       X-Content-Type-Options:
@@ -123,12 +123,12 @@ interactions:
       Accept-Encoding:
       - gzip, deflate, br
       Authorization:
-      - API_TOKEN_c36e62bc-54fc-4a08-b4be-b02a9b07af7f
+      - API_TOKEN_441097fb-50e3-4944-a820-65dadcc6c9a5
       Connection:
       - keep-alive
       Cookie:
-      - AWSALB=Pbj6BXt8m+TauJaOrVXFO9P6BjtpTzsNUDltfJmIjPPNC5Tp4meIOLcQXzi53ZtiXuxFclnTdzo4P4e6CNp+503gCknUDOSVlKkj0oFEvhgQl6e30w7blqD9mHWR;
-        AWSALBCORS=Pbj6BXt8m+TauJaOrVXFO9P6BjtpTzsNUDltfJmIjPPNC5Tp4meIOLcQXzi53ZtiXuxFclnTdzo4P4e6CNp+503gCknUDOSVlKkj0oFEvhgQl6e30w7blqD9mHWR
+      - AWSALB=z/MQon21syLZ3xdm2rU7C5ZKLqdnnFe2DHkclRWOmGsA1NrFCyDT15v29sOOnPrdtTRcC7tLHzbWSKmz6ZCGq/E+SxeZgPOQ/Re7URB66H473XTK9azxUvFLbJ/f;
+        AWSALBCORS=z/MQon21syLZ3xdm2rU7C5ZKLqdnnFe2DHkclRWOmGsA1NrFCyDT15v29sOOnPrdtTRcC7tLHzbWSKmz6ZCGq/E+SxeZgPOQ/Re7URB66H473XTK9azxUvFLbJ/f
       User-Agent:
       - python-welkin/0.0.7
     method: GET
@@ -158,16 +158,16 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Sun, 13 Nov 2022 16:29:50 GMT
+      - Sun, 13 Nov 2022 16:51:02 GMT
       Expires:
       - '0'
       Pragma:
       - no-cache
       Set-Cookie:
-      - AWSALB=35irEmjm5ZmkiI5G6qcP7WrhdSPiiXhK2bQt+eMHNPG3XYAm6oqVEba2CHF3DO6NLO1i562XwHATiG7NFPZq4SLihDl2YB+Ax+qejaeUH6hK522Zloquzi74A4nD;
-        Expires=Sun, 20 Nov 2022 16:29:50 GMT; Path=/
-      - AWSALBCORS=35irEmjm5ZmkiI5G6qcP7WrhdSPiiXhK2bQt+eMHNPG3XYAm6oqVEba2CHF3DO6NLO1i562XwHATiG7NFPZq4SLihDl2YB+Ax+qejaeUH6hK522Zloquzi74A4nD;
-        Expires=Sun, 20 Nov 2022 16:29:50 GMT; Path=/; SameSite=None; Secure
+      - AWSALB=bVqiEeLSIay2YXeUVTocn5Vx/K1d8EzHmqbkxjFAJek+cpn83HqQNUGggM/DHYjwWsjGtDl5YKR0LOI/NntLhJgvYBVY2G520mWny2mtXF6qkbpjTg/2LF8c435Y;
+        Expires=Sun, 20 Nov 2022 16:51:01 GMT; Path=/
+      - AWSALBCORS=bVqiEeLSIay2YXeUVTocn5Vx/K1d8EzHmqbkxjFAJek+cpn83HqQNUGggM/DHYjwWsjGtDl5YKR0LOI/NntLhJgvYBVY2G520mWny2mtXF6qkbpjTg/2LF8c435Y;
+        Expires=Sun, 20 Nov 2022 16:51:01 GMT; Path=/; SameSite=None; Secure
       Transfer-Encoding:
       - chunked
       X-Content-Type-Options:
@@ -185,7 +185,7 @@ interactions:
       Accept-Encoding:
       - gzip, deflate, br
       Authorization:
-      - API_TOKEN_c36e62bc-54fc-4a08-b4be-b02a9b07af7f
+      - API_TOKEN_441097fb-50e3-4944-a820-65dadcc6c9a5
       Connection:
       - keep-alive
       User-Agent:
@@ -208,8 +208,8 @@ interactions:
         "auditDataAccessEnabled": true}, {"instanceId": "edd053f6-0ea5-47e0-8aca-368ddb6e25bc",
         "instanceName": "staging", "instanceDescription": "Staging", "userEmailWithInstanceDomain":
         null, "workshopAccessEnabled": true, "auditDataAccessEnabled": true}]}, "createdByName":
-        "createdByName_REDACTED_bf1f2159-cf6c-4104-b149-7bdd4947b809", "updatedByName":
-        "updatedByName_REDACTED_72aa7fe3-dec2-42a8-96c5-758d42bd778c", "id": "a559fa83-e3ec-4773-8ed7-3bc069d1f7c4",
+        "createdByName_REDACTED_07e2026d-3d8d-4fd4-8e2f-498551cd75c7", "updatedByName":
+        "updatedByName_REDACTED_23005d27-5474-467b-ba8f-2a2b945765b8", "id": "a559fa83-e3ec-4773-8ed7-3bc069d1f7c4",
         "username": "sam", "email": "sam@lightmatter.com", "locale": "en-US", "firstName":
         "Sam", "lastName": "Morgan", "enabled": true, "mfaEnabled": false, "statusType":
         null, "createdAt": "2022-08-03T21:37:00.536Z", "updatedAt": "2022-08-03T21:37:00.536Z",
@@ -234,16 +234,16 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Sun, 13 Nov 2022 16:29:51 GMT
+      - Sun, 13 Nov 2022 16:51:02 GMT
       Expires:
       - '0'
       Pragma:
       - no-cache
       Set-Cookie:
-      - AWSALB=PVyZGkaPdZ9LKaZLPHoRRa9rtwn+Q7ZSE90ZuA1Evxsb4flmI5WQfappxikoNCv/0+/k5EgXF3KSZ9jDjxzQcqDlB8gIZU1t3rrvcjBYeqQf8wm+V49eCHI6fK6H;
-        Expires=Sun, 20 Nov 2022 16:29:51 GMT; Path=/
-      - AWSALBCORS=PVyZGkaPdZ9LKaZLPHoRRa9rtwn+Q7ZSE90ZuA1Evxsb4flmI5WQfappxikoNCv/0+/k5EgXF3KSZ9jDjxzQcqDlB8gIZU1t3rrvcjBYeqQf8wm+V49eCHI6fK6H;
-        Expires=Sun, 20 Nov 2022 16:29:51 GMT; Path=/; SameSite=None; Secure
+      - AWSALB=XyBqz7+vvMWu98lB0BRmj+BjpMxt6kOBZ3A0EcNBXk8VknpqEBIpKsHzy3vNRHKEl1a1CckdND9w2VsIIHUiUNclQzvHZqPKwzy6xXJKKo+9Ggqmn688vC+MwqdL;
+        Expires=Sun, 20 Nov 2022 16:51:02 GMT; Path=/
+      - AWSALBCORS=XyBqz7+vvMWu98lB0BRmj+BjpMxt6kOBZ3A0EcNBXk8VknpqEBIpKsHzy3vNRHKEl1a1CckdND9w2VsIIHUiUNclQzvHZqPKwzy6xXJKKo+9Ggqmn688vC+MwqdL;
+        Expires=Sun, 20 Nov 2022 16:51:02 GMT; Path=/; SameSite=None; Secure
       Transfer-Encoding:
       - chunked
       X-Content-Type-Options:
