@@ -5,7 +5,14 @@ from django.urls import reverse
 from django.utils import timezone
 from model_bakery import baker
 
-from django_welkin.models import CalendarEvent, CDTRecord, Patient, WebhookMessage
+from django_welkin.models import CalendarEvent, CDTRecord, Chat, Patient, WebhookMessage
+
+
+def response_ok(response):
+    assert response.content.decode() == "Message stored."
+    assert response.status_code == HTTPStatus.OK
+
+    return True
 
 
 @pytest.mark.django_db
@@ -23,8 +30,8 @@ def test_dummy_payload(client, payload):
         data=payload,
     )
 
-    assert response.status_code == HTTPStatus.OK
     assert response.content.decode() == "Test payload received"
+    assert response.status_code == HTTPStatus.OK
 
 
 @pytest.mark.django_db
@@ -42,8 +49,8 @@ def test_missing_data(client):
             data=payload,
         )
 
+        assert "Payload missing" in response.content.decode()
         assert response.status_code == HTTPStatus.BAD_REQUEST
-        assert response.content.decode().startswith("Payload missing")
 
         wm = WebhookMessage.objects.all().last()
         assert wm.received_at >= start
@@ -73,8 +80,7 @@ def test_calendar_event(client, api_key, payload):
         data=payload,
     )
 
-    assert response.status_code == HTTPStatus.OK
-    assert response.content.decode() == "Message stored."
+    assert response_ok(response)
 
     event = CalendarEvent.objects.get(id=payload["sourceId"])
     assert str(event.id) == payload["sourceId"]
@@ -109,8 +115,7 @@ def test_cdt_record(client, api_key, payload):
         data=payload,
     )
 
-    assert response.status_code == HTTPStatus.OK
-    assert response.content.decode() == "Message stored."
+    assert response_ok(response)
 
     cdt_record = CDTRecord.objects.get(id=payload["sourceId"])
     assert str(cdt_record.id) == payload["sourceId"]
@@ -137,9 +142,41 @@ def test_patient(client, payload):
         data=payload,
     )
 
-    assert response.status_code == HTTPStatus.OK
-    assert response.content.decode() == "Message stored."
+    assert response_ok(response)
 
     patient = Patient.objects.get(id=payload["sourceId"])
     assert patient.first_name == "Webhook"
     assert patient.last_name == "Patient"
+
+
+@pytest.mark.vcr
+@pytest.mark.django_db
+def test_chat(client, api_key):
+    payload = {
+        "patientId": "fcf051b7-1d8e-4912-b402-e2c436e4c2cc",
+        "tenantName": "lightmatter",
+        "instanceName": "sandbox",
+        "message": "Energy equals mass times the speed of light squared.",
+    }
+    baker.make(
+        "django_welkin.Patient",
+        id=payload["patientId"],
+        instance_id=api_key.instance_id,
+    )
+    baker.make(
+        "django_welkin.User",
+        id="d2b3d940-01ec-44f3-a2cd-b5298823ec9f",
+        instance_id=api_key.instance_id,
+    )
+
+    response = client.post(
+        reverse("welkin"),
+        content_type="application/json",
+        data=payload,
+    )
+
+    assert response_ok(response)
+
+    chat = Chat.objects.get(message=payload["message"])
+    assert chat.message == payload["message"]
+    assert str(chat.patient_id) == payload["patientId"]
