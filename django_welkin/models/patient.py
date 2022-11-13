@@ -56,6 +56,13 @@ class Patient(WelkinModel):
 
         super().save(*args, **kwargs)
 
+    @classmethod
+    def from_webhook(cls, payload):
+        if "sourceId" not in payload:
+            payload["sourceId"] = payload["patientId"]
+
+        return super().from_webhook(payload)
+
     def sync(self):
         if not self.pk:
             patient = self.client.Patient(
