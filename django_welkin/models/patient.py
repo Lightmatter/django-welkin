@@ -21,9 +21,11 @@ class PatientManager(models.Manager):
 class Patient(WelkinModel):
     first_name = models.CharField(_("first name"), max_length=255)
     last_name = models.CharField(_("last name"), max_length=255)
-    middle_name = models.CharField(_("middle name"), max_length=255, null=True)
-    birth_date = models.DateField(null=True)
-    gender = models.CharField(_("gender"), max_length=255, null=True)
+    middle_name = models.CharField(
+        _("middle name"), max_length=255, default="", blank=True
+    )
+    birth_date = models.DateField(null=True, blank=True)
+    gender = models.CharField(_("gender"), max_length=255, default="", blank=True)
 
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True
@@ -35,6 +37,24 @@ class Patient(WelkinModel):
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
+
+    def save(self, *args, **kwargs):
+        # Sync should all be here I think. Normal ORM actions on CRUD plus:
+        # - Create: Create a new patient on Welkin
+        # - Read: Do nothing, use local record for reading
+        # - Update: Push updates to this model up to Welkin
+        # - Delete: Delete patient from Welkin (if possible), otherwise some sort of flag on
+        #           Welkin patient?
+
+        if not self.pk:
+            patient = self.client.Patient(
+                firstName=self.first_name, lastName=self.last_name
+            )
+            patient.create()
+
+            self.id = patient.id
+
+        super().save(*args, **kwargs)
 
     def sync(self):
         if not self.pk:
@@ -56,21 +76,3 @@ class Patient(WelkinModel):
             self.birth_date = parse_datetime(patient.birthDate)
 
         self.save()
-
-    def save(self, *args, **kwargs):
-        # Sync should all be here I think. Normal ORM actions on CRUD plus:
-        # - Create: Create a new patient on Welkin
-        # - Read: Do nothing, use local record for reading
-        # - Update: Push updates to this model up to Welkin
-        # - Delete: Delete patient from Welkin (if possible), otherwise some sort of flag on
-        #           Welkin patient?
-
-        if not self.pk:
-            patient = self.client.Patient(
-                firstName=self.first_name, lastName=self.last_name
-            )
-            patient.create()
-
-            self.id = patient.id
-
-        super().save(*args, **kwargs)
