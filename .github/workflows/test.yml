@@ -48,10 +48,9 @@ jobs:
       - name: Install dependencies
         run: |
           poetry install --with test --no-interaction --no-root
-          poetry run pytest -p pytest_cof
 
       - name: Run tests
-        run: poetry run pytest --cov=django_welkin
+        run: poetry run pytest
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
