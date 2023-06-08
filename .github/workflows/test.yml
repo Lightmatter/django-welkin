@@ -46,7 +46,9 @@ jobs:
         run: poetry env use ${{ matrix.python-version }}
 
       - name: Install dependencies
-        run: poetry install --with test --no-interaction
+        run: |
+          poetry install --with test --no-interaction --no-root
+          poetry run playwright install chromium
 
       - name: Run tests
         run: poetry run pytest -p pytest_cov
