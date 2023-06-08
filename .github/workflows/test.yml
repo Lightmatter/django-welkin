@@ -23,7 +23,7 @@ jobs:
     strategy:
       matrix:
         # python-version: ${{ fromJson(needs.get-python-versions.outputs.python-matrix) }}
-        python-versions: ["3.11"]
+        python-version: ["3.11"]
 
     steps:
       - name: Check out repository
