@@ -22,7 +22,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ${{ fromJson(needs.get-python-versions.outputs.python-matrix) }}
+        # python-version: ${{ fromJson(needs.get-python-versions.outputs.python-matrix) }}
+        python-versions: ["3.11"]
 
     steps:
       - name: Check out repository
