@@ -46,12 +46,10 @@ jobs:
         run: poetry env use ${{ matrix.python-version }}
 
       - name: Install dependencies
-        run: |
-          poetry install --with test --no-interaction --no-root
-          poetry run playwright install chromium
+        run: poetry install --with test --no-interaction --no-root
 
       - name: Run tests
-        run: poetry run pytest -p pytest_cov
+        run: poetry run pytest --cov=django_welkin
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
