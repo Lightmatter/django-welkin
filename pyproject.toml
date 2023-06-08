@@ -24,7 +24,7 @@ classifiers = [
 packages = [{include = "django_welkin"}]
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = "^3.11"
 welkin = "^0.0.6"
 django-solo = "^2.0.0"
 
