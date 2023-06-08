@@ -46,7 +46,9 @@ jobs:
         run: poetry env use ${{ matrix.python-version }}
 
       - name: Install dependencies
-        run: poetry install --with test --no-interaction --no-root
+        run: |
+          poetry install --with test --no-interaction --no-root
+          poetry run pytest -p pytest_cof
 
       - name: Run tests
         run: poetry run pytest --cov=django_welkin
