@@ -1,6 +1,6 @@
-# Welkin
+# django-welkin
 
-Welkin is a Django app to connect to the Welkin Health API.
+Django Welkin is a Django app that interfaces with the Welkin Health API.
 
 ## Quick start
 
@@ -28,5 +28,5 @@ path('welkin/', include('django_welkin.urls')),
 
 4. Run `python manage.py migrate` to create the welkin models.
 
-5. Start the development server and visit http://localhost:8000/admin/welkin/configuration/
-   to and add API secrets to the singleton (you'll need the Admin app enabled).
+5. Start the development server and visit http://localhost:8000/admin/welkin/apikey/
+   to and add API secrets for your Welkin instance (you'll need the Admin app enabled).
