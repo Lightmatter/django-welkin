@@ -8,7 +8,7 @@ class User(WelkinModel):
     first_name = models.CharField(_("first name"), max_length=255)
     last_name = models.CharField(_("last name"), max_length=255)
     email = models.CharField(
-        _("email",
+        _("email"),
         max_length=255,
         blank=True,
         default="",
