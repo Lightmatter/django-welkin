@@ -1,9 +1,9 @@
 [tool.poetry]
 name = "django-welkin"
-version = "0.0.1"
+version = "0.0.2"
 description = "A Django app interfacing with the Welkin API."
 license = "GPL-3.0-or-later"
-authors = ["Sam Morgan <sam@lightmatter.com>"]
+authors = ["Sam Morgan <sam@lightmatter.com>", "Taylor Cochran <taylor@lightmatter.com>"]
 readme = "README.md"
 homepage = "https://pypi.org/project/django-welkin/"
 repository = "https://github.com/lightmatter/django-welkin"
