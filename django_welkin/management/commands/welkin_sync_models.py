@@ -2,14 +2,18 @@ from datetime import datetime, timedelta, timezone
 
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.management.base import BaseCommand
+from django.conf import settings
 from django.db import IntegrityError
 from django.utils.dateparse import parse_datetime
 from welkin.exceptions import WelkinHTTPError
 from welkin.models.formation import FormationDataType
 
+
 from ...models import CDT, CalendarEvent, CDTRecord, Patient, User
 from ...models.base import _Welkin
 
+# TODO: send out a warning to indicate this will removed soon
+SYNC_ROLES = settings.WELKIN_SYNC_ROLES or ["health-coach", "physician"]
 
 # pylint: disable=no-member
 class Command(BaseCommand):
@@ -43,7 +47,7 @@ class Command(BaseCommand):
                 if role["instanceName"] != client.instance:
                     continue
 
-                if role["permissionName"] in ["health-coach", "physician"]:
+                if role["permissionName"] in SYNC_ROLES:
                     User.objects.update_or_create(
                         id=user.id,
                         defaults={
