@@ -13,7 +13,9 @@ from ...models import CDT, CalendarEvent, CDTRecord, Patient, User
 from ...models.base import _Welkin
 
 # TODO: send out a warning to indicate this will removed soon
-SYNC_ROLES = settings.WELKIN_SYNC_ROLES or ["health-coach", "physician"]
+SYNC_ROLES = ["health-coach", "physician"]
+if hasattr(settings, "WELKIN_SYNC_ROLES"):
+    SYNC_ROLES = settings.WELKIN_SYNC_ROLES
 
 # pylint: disable=no-member
 class Command(BaseCommand):
